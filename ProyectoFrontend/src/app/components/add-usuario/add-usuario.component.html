@@ -1,0 +1,102 @@
+<app-menu></app-menu>
+<!-- Bottom Bar Start -->
+<div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="addIndex">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Buscar">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="user">
+                    <a href="wishlist.html" class="btn wishlist">
+                        <i class="fa fa-heart"></i>
+                        <span>(0)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+<form  method="post" id="form" (submit)="saveUsuario()">
+<div class="login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">    
+                <div class="register-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Nombres</label>
+                            <input class="form-control" id="nombre"  type="text" placeholder="Nombres" name="nombre"  [(ngModel)]="usuario.nombre" /> 
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <label>Apellido Paterno</label>
+                            <input class="form-control" id="paterno"  type="text" placeholder="Apellido Paterno" name="paterno" minlength="5" maxlength="25" [(ngModel)]="usuario.paterno" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Apellido Materno</label>
+                            <input class="form-control" id="materno" type="text" placeholder="Apellido Materno" name="materno" minlength="5" maxlength="25"  [(ngModel)]="usuario.materno" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>DNI</label>
+                            <input class="form-control" id="dni" name="dni" type="text" placeholder="Coloque su DNI" minlength="8" maxlength="8" [(ngModel)]="usuario.dni"  />
+                        </div>
+
+                        
+                        <div class="col-md-6">
+                            <label> Direccion</label>
+                            <input class="form-control" id="direccion"  name="direccion" type="text" placeholder="Coloque su direccion" minlength="5" maxlength="25"  [(ngModel)]="usuario.direccion"/>
+                        </div>
+
+                       
+                        <div class="col-md-6">
+                            <label> Celular </label>
+                            <input class="form-control" id="celular" name="celular"  placeholder="Numero de Celular" minlength="9" maxlength="9"  [(ngModel)]="usuario.celular" />
+                        </div>
+
+
+
+                        <div class="col-md-6">
+                            <label>Usuario</label>
+                            <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Coloque su Usuario" [(ngModel)]="usuario.nombreUsuario"  />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Email</label>
+                            <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Coloque su Email" [(ngModel)]="usuario.email" /> 
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label>Contraseña</label>
+                            <input class="form-control" id="password" name="password" type="password" placeholder="Contraseña" [(ngModel)]="usuario.password" />
+                        </div>
+                         <br>
+                        <div class="col-md-12">
+                            <div style="text-align: center;">
+                            <button class="btn">Registrar</button>
+                            
+                            <br><a routerLink="/addVendedor2" >Registrarse como Tienda</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</form>
+<!-- Login End -->
+

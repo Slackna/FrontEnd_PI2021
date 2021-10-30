@@ -1,0 +1,48 @@
+
+ <app-menu></app-menu>
+<div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="addIndex">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Buscar">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  </div>
+
+  <div class="wrapper fadeInDown">
+     
+          <div id="formContent">
+                    <h2 class="active" routerLink="/login">Iniciar Sesión</h2>
+                    <a href="addUsuario"><h2 class="inactive underlineHover"  >Crear Cuenta</h2></a>
+              <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
+                      <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Ingresa tu usuario" class="fadeIn second"
+                      [(ngModel)]="nombreUsuario" required>
+                      <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" class="fadeIn third"
+                      [(ngModel)]="password" required>
+                      <div class="form-group">
+                      <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                          <i class="fas fa-sign-in-alt" ></i> Iniciar Sesión</button>
+                        </div>
+              </form>
+              <div id="formFooter">
+                <a class="underlineHover" href="#">Olvidaste tu Contraseña</a>
+              </div>
+              <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">Contraseña y/o Usuario Invalidos</div>
+            </div>
+  </div>
+
+
+
+

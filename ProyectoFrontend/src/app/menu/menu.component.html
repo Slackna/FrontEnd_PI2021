@@ -1,0 +1,54 @@
+
+
+<div class="nav">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a href="#" class="navbar-brand">MENU</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav mr-auto">
+                  <li class="nav-item">
+                      <a class="nav-link" href="addIndex"><i class="fas fa-home"></i> Inicio</a>
+                    </li>
+                    <a *ngIf="isLogged" href="product-list.html" class="nav-item nav-link">Historial</a>
+                    <a *ngIf="isLogged" href="product-detail.html" class="nav-item nav-link">Detalle</a>
+
+                    <div *ngIf="isLogged" class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vender</a>
+                        <div class="dropdown-menu">
+                            <li class="nav-item" *ngIf="isLogged">
+                              <a class="dropdown-item" routerLink="/addProducto"> Vender Producto</a>
+                              <a href="cart.html" class="dropdown-item">Comprar</a>
+                            </li>
+                        </div>
+                    </div>
+                    <a *ngIf="isLogged" href="checkout.html" class="nav-item nav-link">Direccion de Envio</a>
+                    <a href="my-account.html" class="nav-item nav-link">Ayuda</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categoria</a>
+                        <div class="dropdown-menu">
+                            <a href="wishlist.html" class="dropdown-item">Lista</a>
+                            <a href="contact.html" class="dropdown-item">Contacto</a>
+                            <a href="contact.html" class="dropdown-item">Mmmmmmm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" *ngIf="isLogged">
+                        <a class="nav-link" routerLink="/addLogin" ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
+                      </li>
+                      <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
+                        <a class="nav-link" style="cursor: pointer;"><i class="fas fa-door-open" ></i> Cerrar Sesión</a>
+                      </li>
+                    
+                  </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Nav Bar End -->   
