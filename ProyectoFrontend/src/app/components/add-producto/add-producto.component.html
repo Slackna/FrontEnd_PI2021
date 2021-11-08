@@ -72,9 +72,12 @@
         
         
   
-            <input type="file" name="file" multiple id="file" accept=".jpg,.png,.jpeg" required="file"  [(ngModel)]="producto.img1"/>
+            <input type="file" name="file" multiple id="file" accept=".jpg,.png,.jpeg" required="file" (change)="onFileSelected($event)"/>
             <!--Previsualizacion-->
-            <div id="preview" class="styleImage"></div>
+            <div *ngIf="previsualizacion" id="preview" class="styleImage">
+                <img [src]='previsualizacion'> 
+
+            </div>
             <!-- //mejores -->
     
     <br>
@@ -91,5 +94,28 @@
     </section>
     
 </form>
-<div *ngIf="f.submitted " class="alert alert-danger mt-3">Necesitas iniciar sesion para vender un producto</div>
+
+<script>
+function getBase64(file) {
+   var reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onload = function () {
+     console.log(reader.result);
+   };
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+   };
+}
+
+
+document.getElementById('button').addEventListener('click', function() {
+  var files = document.getElementById('file').files;
+  if (files.length > 0) {
+    getBase64(files[0]);
+  }
+});
+
+// prints the base64 string
+</script>
+<!--<div *ngIf="f.submitted " class="alert alert-danger mt-3">Necesitas iniciar sesion para vender un producto</div>-->
     

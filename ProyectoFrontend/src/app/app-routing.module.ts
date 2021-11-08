@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Router, RouterModule, Routes } from '@angular/router';
 import { AddIndexComponent } from './components/add-index/add-index.component';
 import { AddLoginComponent } from './components/add-login/add-login.component';
 import { AddProductoComponent } from './components/add-producto/add-producto.component';
@@ -14,11 +14,13 @@ const routes: Routes = [
   {path:"addProducto", component:AddProductoComponent},
   {path:"addIndex", component:AddIndexComponent},
   {path:"addLogin", component:AddLoginComponent},
-
+  {path: '**', redirectTo: '/addIndex'}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+
+}
