@@ -1,6 +1,6 @@
 export class Usuario {
 
-    id?: number;
+    idUsuario?: number;
 	nombre?: string;
 	paterno?: string;
     materno?: string;

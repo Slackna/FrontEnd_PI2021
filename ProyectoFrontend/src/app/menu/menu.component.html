@@ -14,39 +14,45 @@
                       <a class="nav-link" href="addIndex"><i class="fas fa-home"></i> Inicio</a>
                     </li>
                     <a *ngIf="isLogged" href="product-list.html" class="nav-item nav-link">Historial</a>
-                    <a *ngIf="isLogged" href="product-detail.html" class="nav-item nav-link">Detalle</a>
+                        <a routerLink="/addProducto" class="nav-item nav-link">Vender</a>
+                    
 
-                    <div *ngIf="isLogged" class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Vender</a>
-                        <div class="dropdown-menu">
-                            <li class="nav-item" *ngIf="isLogged">
-                              <a class="dropdown-item" routerLink="/addProducto"> Vender Producto</a>
-                              <a href="cart.html" class="dropdown-item">Comprar</a>
-                            </li>
-                        </div>
-                    </div>
-                    <a *ngIf="isLogged" href="checkout.html" class="nav-item nav-link">Direccion de Envio</a>
-                    <a href="my-account.html" class="nav-item nav-link">Ayuda</a>
+                   
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categoria</a>
                         <div class="dropdown-menu">
-                            <a href="wishlist.html" class="dropdown-item">Lista</a>
-                            <a href="contact.html" class="dropdown-item">Contacto</a>
-                            <a href="contact.html" class="dropdown-item">Mmmmmmm</a>
+                            <a routerLink="/addListaCategoriaTecnologia" class="dropdown-item">Tecnologia</a>
+                            <a routerLink="/addListaCategoriaElectrodomesticos" class="dropdown-item">Electrodomesticos</a>
+                            <a routerLink="/addListaCategoriaMuebles" class="dropdown-item">Hogar y Muebles</a>
+                            <a routerLink="/addListaCategoriaDeportes" class="dropdown-item">Deportes</a>
+                            <a routerLink="/addListaCategoriaBellezayCuidado" class="dropdown-item">Belleza y Cuidado</a>
+                            <a routerLink="/addListaCategoriaHerramientas"class="dropdown-item">Herramientas</a>
+                            <a routerLink="/addListaCategoriaConstruccion"class="dropdown-item">Construcion</a>
+                            <a routerLink="/addListaCategoriaIndustrias" class="dropdown-item">Industrias</a>
+                            <a routerLink="/addListaCategoriaJuguetes" class="dropdown-item">Juegos y Juguetes</a>
+                            <a routerLink="/addListaCategoriaBebes" class="dropdown-item">Bebes y Niños</a>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav ml-auto">
-                    <li class="nav-item" *ngIf="isLogged">
+                    <div class="nav-item dropdown">
+                        <a *ngIf="isLogged" href="product-detail.html" data-toggle="dropdown" class="nav-link dropdown-toggle"><i class="fas fa-user"></i> {{nombreUsuario}}</a>
+                        <div class="dropdown-menu">
+                          <a routerLink="/addProducto" class="dropdown-item">Publicar</a>
+                          <a  routerLink="/addPerfil" class="dropdown-item">Compras</a>
+                          <a  routerLink="/addPerfil" class="dropdown-item">Publicaciones</a>
+                          <a  routerLink="/addIndex"  class="dropdown-item" *ngIf="isLogged" (click)="onLogOut()">Salir</a>
+                          </div>
+                          </div>
+                    <li class="nav-item" *ngIf="!isLogged">
                         <a class="nav-link" routerLink="/addLogin" ><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
                       </li>
-                      <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
-                        <a class="nav-link" style="cursor: pointer;"><i class="fas fa-door-open" ></i> Cerrar Sesión</a>
-                      </li>
-                    
                   </ul>
                 </div>
+              
+               
             </div>
         </nav>
     </div>

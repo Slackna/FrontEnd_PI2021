@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080/",
+            "webRoot": "${workspaceFolder}"
+        },
+
+
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Open add-detall-compra.component.html",
+            "file": "c:\\Users\\Home\\Desktop\\FrontEndProyecto_Version2\\FrontEnd_PI2021\\ProyectoFrontend\\src\\app\\components\\add-detall-compra\\add-detall-compra.component.html"
+        },
+        {
+            "type": "node-terminal",
+            "name": "JavaScript Debug Terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

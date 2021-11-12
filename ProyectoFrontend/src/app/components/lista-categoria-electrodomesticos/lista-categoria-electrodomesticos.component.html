@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+<div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="addIndex">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Buscar">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="user">
+                    <a href="wishlist.html" class="btn wishlist">
+                        <i class="fa fa-heart"></i>
+                        <span>(0)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div>
+    <div class="contenido">
+    
+        <div class="featured-product product">
+    
+            <div class="menu" >
+                <ul>
+                    <li><a href="enlace-1.html">Hasta S/500</a></li>
+                    <li><a href="enlace-1.html">S/500 a S/1.000</a></li>
+                    <li><a href="enlace-1.html">Más de S/1.000</a></li>
+                    <li><a href="enlace-1.html" >Menos S/500</a></li>
+                </ul>
+            </div> 
+    
+    
+            <div class="container-fluid">
+                <div class="row align-items-center product-slider product-slider-4">
+                    
+                    <div class="col-lg-3" *ngFor="let producto of  listaProductos2"  >
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a>{{producto.nombre}}</a>
+                            </div>
+                            <div class="product-image">
+                                <a href="product-detail.html">
+                                    <img src="assets/img/product-6.jpg" alt="Product Image">
+                                </a>
+                                
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{producto.precio}}</h3>
+                                <a class="btn" href=""><i class="fa fa-heart"></i>Comprar</a>
+                                <br>
+                                <div class="product-des">
+                                <a >{{producto.descripcion}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    

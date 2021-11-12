@@ -842,11 +842,13 @@ h2 {
 .featured-product {
     position: relative;
     padding: 30px 0;
+    
 }
 
 .recent-product {
     position: relative;
     padding: 30px 0;
+    
 }
 
 .product .section-header {
@@ -915,6 +917,7 @@ h2 {
     position: relative;
     width: 100%;
     padding: 30px 0;
+    
 }
 
 .product-view .product-view-top {

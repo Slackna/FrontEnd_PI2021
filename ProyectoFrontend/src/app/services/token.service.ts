@@ -33,6 +33,8 @@ export class TokenService {
     window.sessionStorage.removeItem(AUTHORITIES_KEY);
     window.sessionStorage.setItem(AUTHORITIES_KEY, JSON.stringify(authorities));
   }
+
+  
    
   public getAuthorities(): string[] {
     this.roles = [];

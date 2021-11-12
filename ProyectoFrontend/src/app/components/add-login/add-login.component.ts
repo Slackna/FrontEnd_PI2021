@@ -14,7 +14,7 @@ export class AddLoginComponent implements OnInit {
  
   isLogged = false;
   isLoginFail = false;
-  loginUsuario!: LoginUsuario;
+  loginUsuario?: LoginUsuario;
   nombreUsuario!: string;
   password!: string;
   roles?: string[] = [];

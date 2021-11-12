@@ -11,6 +11,6 @@ export class Producto {
   condicion?: string;
   categoria?: Categoria; 
   img1?: any;
-  img2?: any;
-  img3?: any;
+  idUsuario?: number;
+  
 }

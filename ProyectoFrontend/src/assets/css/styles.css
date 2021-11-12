@@ -682,12 +682,13 @@ h2 {
 /**********************************/
 .product-item {
     position: relative;
+    padding-bottom: 10px;
 }
 
 .product-item .product-title {
     padding: 15px;
     text-align: center;
-    background: #000000;
+    background:#999999;
     transition: all .3s;
 }
 
@@ -717,6 +718,9 @@ h2 {
     text-decoration: line-through;
     font-weight: 700;
     color: #999999;
+}
+.product-des{
+    color:  #ffffff;
 }
 
 .product-item:hover .product-title a,
@@ -800,7 +804,7 @@ h2 {
 
 .product-item .product-price {
     padding: 20px;
-    background: #000000;
+    background: #999999;
     transition: all .3s;
 }
 
@@ -842,6 +846,8 @@ h2 {
 .featured-product {
     position: relative;
     padding: 30px 0;
+   
+    
 }
 
 .recent-product {
@@ -2459,4 +2465,27 @@ h2 {
     font-family: 'Source Code Pro', monospace;
     
 }
+
+  
+ 
+  
+.contenido{
+    width: 100%;
+    height:auto;
+   
+    
+}
+.menu{
+    padding-top: 10px;
+    float: left;
+    width: 10%;
+    height: auto;
+}
+.contenidoUsuario{
+    width: 100%;
+    height:auto;
+   
+    
+}
+
 
