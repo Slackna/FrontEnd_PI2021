@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="action">
 
-                                    <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Comprar Ahora</a>
+                                    <a class="btn" href="/addCompra/{{productodetalle.idProducto}}"><i class="fa fa-shopping-bag"></i>Realizar Pedido</a>
                                 </div>
                             </div>
                         </div>
@@ -97,12 +97,14 @@
                             </div>
                             <div id="specification" class="container tab-pane fade">
                                 <h4>Informacion del Vendedor</h4>
-                                <p>
-                                    Direcccion: {{productodetalle.direccion}}
-                                </p>
-                                <p>
-                                    Nombres y Apellidos :
-                                </p>
+                                <br>
+                                <p>Nombres: {{productodetalle.usuario!.nombre}}</p>
+                                <p> Apellido Paterno: {{productodetalle.usuario!.paterno}}</p>
+                                <p> Apellido Materno: {{productodetalle.usuario!.materno}}</p>
+                                <p> Celular: {{productodetalle.usuario!.celular}}</p>
+                                <p> Email: {{productodetalle.usuario!.email}}</p>
+                                <p>  Direcccion: {{productodetalle.direccion}}</p>
+                                <p> Empresa: {{productodetalle.usuario!.razonSocial}}</p>
                             </div>
                             
                             
@@ -168,4 +170,15 @@
         </nav>
     </div>
 </div>
-
+<!--<script>
+    window.watsonAssistantChatOptions = {
+        integrationID: "8d99c35f-0808-497e-89ca-3c7996192085", // The ID of this integration.
+        region: "us-south", // The region your integration is hosted in.
+        serviceInstanceID: "5b6d2273-f671-440c-b4a0-4407a9264a8b", // The ID of your service instance.
+        onLoad: function (instance) { instance.render(); }
+    };
+    setTimeout(function () {
+        const t = document.createElement('script')});
+    
+    </script>-->
+ 

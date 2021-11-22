@@ -11,7 +11,10 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class ListaCategoriaDeportesComponent implements OnInit {
   listaProductos: Producto[] = [];  
 
-    idCategoria=4
+    idCategoria=4;
+    filterPost= 0;
+    filterPost2= 0;
+    filterPost3= 0;
 
   constructor(private ProductoService:ProductoService) { }
   listarProductosxCategoria(){
@@ -29,6 +32,9 @@ export class ListaCategoriaDeportesComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarProductosxCategoria();
+    this.filterPost
+    this.filterPost2
+    this.filterPost3
   }
 
 }

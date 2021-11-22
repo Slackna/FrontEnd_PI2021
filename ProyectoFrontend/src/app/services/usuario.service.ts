@@ -12,6 +12,6 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
   create(data:Usuario):Observable<any> {
-         return this.http.post(baseUrl, data)
+         return this.http.post(baseUrl,data)
       }
 }

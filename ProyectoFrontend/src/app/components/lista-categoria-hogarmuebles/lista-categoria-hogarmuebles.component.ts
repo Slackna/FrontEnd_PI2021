@@ -12,6 +12,10 @@ export class ListaCategoriaHogarmueblesComponent implements OnInit {
   listaProductos: Producto[] = [];  
   
     idCategoria=3
+    filterPost= 0;
+    filterPost2= 0;
+    filterPost3= 0;
+
  
 
   constructor(private ProductoService:ProductoService) { }
@@ -30,6 +34,9 @@ export class ListaCategoriaHogarmueblesComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarProductosxCategoria();
+    this.filterPost
+    this.filterPost2
+    this.filterPost3
   }
 
 }

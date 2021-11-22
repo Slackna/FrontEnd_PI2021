@@ -13,7 +13,7 @@
 }
 
 .form-register h4{
-    font-size: 45px;
+    font-size: 35px;
     margin-bottom: 20px;
     text-align: center;
     font-family: 'Calibri';
@@ -37,7 +37,7 @@
 .control-label{
     color: #1f26b5;
     font-family: 'calibri';
-    font-size: 30px;
+    font-size: 20px;
 
 }
 .form-register .botons{
@@ -61,7 +61,7 @@
     border: 1px solid #1f53c5;
     font-family: 'calibri';
     font-size: 18px;
-    color: black;
+    color: #1f26b5;
 
 }
 
@@ -69,10 +69,18 @@ input[type='radio'], label{
     
     font-family: 'calibri';
     font-size: 20px;
-    color: black;
+    color: #1f26b5;
 
     vertical-align: middle;
     padding: 10px;
     margin: 10px;
 
  }
+
+ .invalid {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 90%;
+    color: #dc3545;
+  
+   }

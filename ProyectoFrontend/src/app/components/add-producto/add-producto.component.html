@@ -1,5 +1,4 @@
 <app-menu></app-menu>
-<!-- Bottom Bar Start -->
 <div class="bottom-bar">
     <div class="container-fluid">
         <div class="row align-items-center">
@@ -27,73 +26,236 @@
             </div>
         </div>
     </div>
+
+
   </div>
-  <div *ngIf="f.submitted " class="alert alert-danger mt-3">Necesitas iniciar sesion para vender un producto</div>
- <form #f="ngForm"  id="form" (ngSubmit)="registra()" enctype="multipart/form-data">
-        
-    <section class="form-register">
+ <div *ngIf="f.submitted " class="alert alert-danger mt-3">Necesitas iniciar sesión para vender un producto</div>
+ 
+ <form [formGroup]="forms" #f="ngForm"  id="form" (ngSubmit)="registra()" enctype="multipart/form-data">
     
-        <h4>Registro de la Publicacion</h4>
+    <div class="form-register">
+        <div class="row">
+            <div class="col-lg-9">
     
+        <h4>Registro de la Publicación</h4>
+
+
+        <div class="col-md-8">
         <label class="control-label">Nombre del Producto</label>
-        <input class="controls" type="text" name="nom_pro" id="nom_pro" placeholder="Ingrese el nombre del producto que desea vender" required="text" minlength="5" maxlength="50" [(ngModel)]="producto.nombre"/>
+        <input class="form-control" formControlName="nom_pro" type="text" name="nom_pro" id="nom_pro" placeholder="Ingrese el nombre del producto que desea vender" maxlength="30"  [(ngModel)]="producto.nombre"/>
     
-        <label class="control-label">Categoria del producto</label>
-        <select class="controls" type="text" name="categoria" id="categoria" [(ngModel)]="producto.categoria!.id_categoria">
+<!------------------------------------------------------------------------>
+
+        <div *ngIf="submitted && forms.controls.nom_pro.errors" class="invalid">
+            <div *ngIf="forms.controls.nom_pro.errors.required">
+                El nombre es un campo obligatorio
+
+            </div>
+            <div *ngIf="forms.controls.nom_pro.errors.pattern">
+                El nombre es de 3 a 30 caracteres
+
+            </div>
+            
+
+        </div>
+<!------------------------------------------------------------------------>
+
+
+    </div>
+
+
+        <div class="col-md-8">
+        <label class="control-label">Categoría del producto</label>
+        <select class="form-control"  formControlName="categoria" type="text" name="categoria" id="categoria" [(ngModel)]="producto.categoria!.id_categoria">
             <option value="-1">[Seleccione]</option>
             <option *ngFor="let aux of lstCategoria" value="{{aux.id_categoria}}">
                 {{aux.nombre}}
             </option>
            
-        </select>
-    
-        <label class="control-label">Marca del Producto</label>
-        <input class="controls" type="text" name="marca" placeholder="Ingrese la marca del producto que desea vender" required="text" minlength="5" maxlength="25"  [(ngModel)]="producto.marca"/>
-    
-        <label class="control-label">Descripcion del Producto</label>
-        <input class="controls" type="text" name="descripcion" placeholder="Ingrese un pequeña descripcion" required="text"  minlength="5" maxlength="50"  [(ngModel)]="producto.descripcion"/>
 
-        <label class="control-label">Direccion</label>
-        <input class="controls" type="text" name="direccion" placeholder="Ingrese la direccion " required="text"  minlength="5" maxlength="50"  [(ngModel)]="producto.direccion"/>
+<!------------------------------------------------------------------------>
+            <div *ngIf="submitted && forms.controls.categoria.errors" class="invalid">
+                <div *ngIf="forms.controls.categoria.errors.required">
+                    Categoria es un campo obligatorio
+
+                </div>
+
+            </div>
+<!------------------------------------------------------------------------>
+
+
+        </select>
+    </div>
     
+
+
+        <div class="col-md-8">
+        <label class="control-label">Marca del Producto</label>
+        <input class="form-control"  formControlName="marca" type="text"  name="marca" placeholder="Ingrese la marca del producto que desea vender"  maxlength="30"  [(ngModel)]="producto.marca"/>
+
+<!------------------------------------------------------------------------>
+<div *ngIf="submitted && forms.controls.marca.errors" class="invalid">
+    <div *ngIf="forms.controls.marca.errors.required">
+        La marca es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.marca.errors.pattern">
+        La marca es de 3 a 30 caracteres
+
+    </div>
     
-        <label class="control-label">Condicion del Producto</label>
-        <select class="controls" type="text" name="condicion" id="condicion" required  [(ngModel)]="producto.condicion">
-            <option></option>
+
+</div>
+
+
+<!------------------------------------------------------------------------>
+
+
+    </div>
+
+
+        <div class="col-md-8">
+        <label class="control-label">Descripción del Producto</label>
+        <input class="form-control" formControlName="descripcion" type="text" name="descripcion" placeholder="Ingrese un pequeña descripcion" maxlength="40"  [(ngModel)]="producto.descripcion"/>
+<!------------------------------------------------------------------------>
+<div *ngIf="submitted && forms.controls.descripcion.errors" class="invalid">
+    <div *ngIf="forms.controls.descripcion.errors.required">
+        El nombre es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.descripcion.errors.pattern">
+        El nombre es de 3 a 40 caracteres
+
+    </div>
+    
+
+</div>
+
+
+<!------------------------------------------------------------------------>
+
+    </div>
+
+
+
+    <div class="col-md-8">
+        <label class="control-label">Dirección</label>
+        <input class="form-control" formControlName="direccion" type="text" name="direccion" placeholder="Ingrese la direccion "  maxlength="25"  [(ngModel)]="producto.direccion"/>
+<!------------------------------------------------------------------------>
+<div *ngIf="submitted && forms.controls.direccion.errors" class="invalid">
+    <div *ngIf="forms.controls.direccion.errors.required">
+        El nombre es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.direccion.errors.pattern">
+        El nombre es de 3 a 25 caracteres
+
+    </div>
+    
+
+</div>
+
+
+
+
+<!------------------------------------------------------------------------>
+
+    </div>
+
+
+
+    <div class="col-md-8">
+        <label class="control-label">Condición del Producto</label>
+        <select class="form-control" formControlName="condicion" type="text" name="condicion" id="condicion" required  [(ngModel)]="producto.condicion">
+            <option value="-1">[Seleccione]</option>
             <option>Nuevo</option>
             <option>Usado</option>
-            
+<!------------------------------------------------------------------------>
+<div *ngIf="submitted && forms.controls.condicion.errors" class="invalid">
+    <div *ngIf="forms.controls.condicion.errors.required">
+        Direccion es un campo obligatorio
+
+    </div>
+
+</div>
+
+
+
+
+
+
+<!------------------------------------------------------------------------>
+
             
         </select>
-        
+        </div>
+
+
+        <div class="col-md-8">
+            <label class="control-label">Precio</label>
+            <input class="form-control" formControlName="precio" type="text" step="any" name="precio" required  [(ngModel)]="producto.precio" required maxlength="10" minlength="2"/>
+<!------------------------------------------------------------------------>
+<div *ngIf="submitted && forms.controls.precio.errors" class="invalid">
+    <div *ngIf="forms.controls.precio.errors.required">
+        El Precio es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.precio.errors.pattern">
+        Solo se acepta numeros
+
+    </div>
     
+
+</div>
+
+<!------------------------------------------------------------------------>
+        
+        </div>
+
+
+        <div class="col-md-8">
+        <label class="control-label" >Fotos del Producto</label>
+        
         <br>
-    
-        <label class="control-label">Fotos del Producto</label>
-        
-        
   
-            <input type="file" name="file" multiple id="img1" accept=".jpg,.png,.jpeg" required="file" (change)="onFileSelected($event)" />
+            <input type="file" formControlName="file" name="file" multiple id="img1" accept=".jpg,.png,.jpeg" required="file" (change)="onFileSelected($event)" />
+<!------------------------------------------------------------------------>
+<div *ngIf="submitted && forms.controls.file.errors" class="invalid">
+    <div *ngIf="forms.controls.file.errors.required">
+        Fotos es un campo obligatorio
+
+    </div>
+    
+
+</div>
+
+
+<!------------------------------------------------------------------------>
+            
             <!--Previsualizacion-->
             <div *ngIf="previsualizacion" id="preview" class="styleImage">
-                <img [src]='previsualizacion'  > 
+              <br>
+
+                <img [src]='previsualizacion' width="400" height="500" > 
+           
 
             </div>
             <!-- //mejores -->
     
     <br>
+       </div>
         
-         <label class="control-label">Precio</label>
-         <input class="controls" type="text" step="any" name="precio" required  [(ngModel)]="producto.precio"/>
-    
+       
+
+
+
          <div style="text-align: center;">
          <button class="btn">Registrar Producto</button>
    
     </div>
-    
-     
-    </section>
-    
+</div>
+</div>
+</div>  
 </form>
 
 

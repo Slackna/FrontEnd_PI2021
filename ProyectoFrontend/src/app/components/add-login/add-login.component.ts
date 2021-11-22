@@ -43,6 +43,7 @@ export class AddLoginComponent implements OnInit {
         this.tokenService.setToken(data.token!);
         this.tokenService.setUserName(data.nombreUsuario!);
         this.tokenService.setAuthorities(data.authorities!);
+        this.tokenService.setUserID(data.idUsuario!);
         this.roles = data.authorities;
         this.router.navigate(['addIndex'])
       },

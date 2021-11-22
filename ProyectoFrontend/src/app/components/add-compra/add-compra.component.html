@@ -1,1 +1,101 @@
-<p>add-compra works!</p>
+
+
+<app-menu></app-menu>
+<!-- Bottom Bar Start -->
+<div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="addIndex">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Buscar">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="user">
+                    <a href="wishlist.html" class="btn wishlist">
+                        <i class="fa fa-heart"></i>
+                        <span>(0)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  </div><!-- Breadcrumb Start -->
+<div class="breadcrumb-wrap">
+    <div class="container-fluid">
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="#">Productos</a></li>
+            <li class="breadcrumb-item active">Verificar</li>
+        </ul>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Checkout Start -->
+<div class="checkout" >
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-page-inner">
+                    <div>
+                        <h3 class="">Verifica tu Compra</h3>
+                        <br>
+                    </div>
+                    <div class="table-responsive"  >
+                        <table class="table table-bordered"   >
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Productos</th>
+                                    <th>Precio</th>
+                                    <th>Descripcion</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle" >
+                                <tr>
+                                    <td>
+                                       
+                                        
+                                            <p>{{productodetalle.nombre}}</p>
+                                        
+                                    </td>
+                                    <td>{{productodetalle.precio}}</td>
+                                    <td>{{productodetalle.descripcion}}</td>
+                                    <td>{{productodetalle.fecha}}</td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout-inner">
+                    <div class="checkout-summary">
+                        <h1>Total</h1>
+                        <p class="sub-total">Sub Total<span>{{productodetalle.precio}}</span></p>
+                        <h2>Total<span>{{productodetalle.precio}}</span></h2>
+                    </div>
+
+                    <div class="checkout-payment">
+                        <div class="checkout-btn">
+                            <button (click)="guardaCompra()">Comprar Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout End -->
+

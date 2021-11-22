@@ -12,13 +12,17 @@ export class ListadoCategoriaTecnologiaComponent implements OnInit {
   listaProductosTec:Producto[] =[]
   idCategoria=1;
   
+  filterPost= 0;
+  filterPost2= 0;
+  filterPost3= 0;
+
 
   constructor(private ProductoService:ProductoService) { }
   listarProductosxCategoriaTec(){
 
     this.ProductoService.listarProductoCategorias(this.idCategoria).subscribe(
       reponse => {
-        console.log("ListoTecnologia");
+        console.log("ListoTecnologia",this.listaProductosTec);
         this.listaProductosTec = reponse;
       },
       error =>{
@@ -27,8 +31,12 @@ export class ListadoCategoriaTecnologiaComponent implements OnInit {
     )  
   }
 
+
   ngOnInit(): void {
     this.listarProductosxCategoriaTec();
+    this.filterPost
+    this.filterPost2
+    this.filterPost3
   }
 
 }

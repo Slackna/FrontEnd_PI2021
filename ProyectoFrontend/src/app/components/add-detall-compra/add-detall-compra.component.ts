@@ -11,9 +11,8 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./add-detall-compra.component.css']
 })
 export class AddDetallCompraComponent implements OnInit {
+  nombre:string=''
  
-   
-  
   constructor(private ProductoService:ProductoService,private tokenService: TokenService,private activatedRoute: ActivatedRoute,private router: Router) {
 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
@@ -23,7 +22,7 @@ export class AddDetallCompraComponent implements OnInit {
   productodetalle: Producto = new Producto;
   listaGeneral:Producto[] =[]
   listarProductosGeneral(){
-
+    
     this.ProductoService.lista().subscribe(
       reponse => {
         console.log("ListoGeneral");
@@ -59,7 +58,6 @@ export class AddDetallCompraComponent implements OnInit {
       }
       window.scrollTo(0, 0)
   });
-   
     
   }
 

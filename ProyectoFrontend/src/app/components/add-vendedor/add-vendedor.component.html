@@ -40,7 +40,7 @@
 </div>
 <!-- Breadcrumb End -->
 
-<form action="" method="post" id="form" (submit)="saveVendedor()">
+<form [formGroup]="forms"  action="" method="post" id="form" (submit)="saveVendedor()">
 <div class="login">
     <div class="container-fluid">
         <div class="row">
@@ -49,34 +49,141 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>RUC</label>
-                            <input class="form-control" id="ruc" name="ruc" type="text" placeholder="RUC" required minlength="11" maxlength="11" [(ngModel)] = "usuario.ruc" />
+                            <input class="form-control" formControlName="ruc" id="ruc" name="ruc" type="text" placeholder="RUC" required minlength="11" maxlength="11" [(ngModel)] = "usuario.ruc" />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.ruc.errors" class="invalid">
+    <div *ngIf="forms.controls.ruc.errors.required">
+        El ruc es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.ruc.errors.pattern">
+        El ruc es de 11 caracteres
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+                        
                         </div>
                         <div class="col-md-6">
-                            <label>Razon Social</label>
-                            <input class="form-control" id="razon_social" name="razon_social" type="text" placeholder="Razon Social" required minlength="2" maxlength="40" [(ngModel)] = "usuario.razonSocial" />
+                            <label>Razón Social</label>
+                            <input class="form-control" formControlName="razon_social" id="razon_social" name="razon_social" type="text" placeholder="Razon Social"  maxlength="30" [(ngModel)] = "usuario.razonSocial" />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.razon_social.errors" class="invalid">
+    <div *ngIf="forms.controls.razon_social.errors.required">
+        La razón social es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.razon_social.errors.pattern">
+        La Razon social es de 3 a 50 digitos
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+  
                         </div>
 
                         <div class="col-md-6">
                             <label> Usuario</label>
-                            <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="email" placeholder="Usuario/Correo" required="email" [(ngModel)] = "usuario.nombreUsuario "/>
+                            <input class="form-control" formControlName="nombreUsuario" id="nombreUsuario" name="nombreUsuario" placeholder="Usuario/Correo"  [(ngModel)] = "usuario.nombreUsuario "/>
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.nombreUsuario.errors" class="invalid">
+    <div *ngIf="forms.controls.nombreUsuario.errors.required">
+        El nombre usuario es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.nombreUsuario.errors.pattern">
+        No debe tener espacios en blanco.
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+ 
                         </div>
 
                         <div class="col-md-6">
                             <label>Contraseña"</label>
-                            <input class="form-control" id="password" name="password" type="password" placeholder="Coloque su Contraseña" required="password" [(ngModel)] = "usuario.password" />
+                            <input class="form-control" formControlName="password" id="password" name="password" type="password" placeholder="Coloque su Contraseña" required="password" [(ngModel)] = "usuario.password" />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.password.errors" class="invalid">
+    <div *ngIf="forms.controls.password.errors.required">
+        La contraseña es un campo obligatorio
+
+    </div>
+   
+    
+
+</div>
+<!------------------------------------------------------------------------>
+ 
                         </div>
 
                         <div class="col-md-6">
-                            <label>Direccion</label>
-                            <input class="form-control" type="text" name="direccion"  placeholder="Coloque su dreccion" [(ngModel)] = "usuario.direccion"  />
+                            <label>Dirección</label>
+                            <input class="form-control" formControlName="direccion" type="text" name="direccion"  placeholder="Coloque su dreccion" [(ngModel)] = "usuario.direccion"  />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.direccion.errors" class="invalid">
+    <div *ngIf="forms.controls.direccion.errors.required">
+        La dirección es un campo obligatorio
+
+    </div>
+   
+    <div *ngIf="forms.controls.direccion.errors.pattern">
+        La direccion es de 3 a 30 digitos
+    </div>
+
+</div>
+<!------------------------------------------------------------------------>
+ 
                         </div>
                         <div class="col-md-6">
                             <label>Email</label>
-                            <input class="form-control" type="text" name="direccion"  placeholder="Coloque su dreccion" [(ngModel)] = "usuario.email"  />
+                            <input class="form-control" formControlName="email" type="text" name="email"  placeholder="Coloque su Email" [(ngModel)] = "usuario.email"  />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.email.errors" class="invalid">
+    <div *ngIf="forms.controls.email.errors.required">
+        El Email es un campo obligatorio
+
+    </div>
+   
+    <div *ngIf="forms.controls.email.errors.pattern">
+        Solo se acepta emails.
+    </div>
+
+</div>
+<!------------------------------------------------------------------------>
+
                         </div>
                         <div class="col-md-6">
                             <label>Celular</label>
-                            <input class="form-control" type="text" name="celular"  placeholder="Coloque su Celular"  minlength="9" maxlength="9" [(ngModel)] = "usuario.celular" />
+                            <input class="form-control" formControlName="celular" type="text" name="celular"  placeholder="Coloque su Celular"  minlength="9" maxlength="9" [(ngModel)] = "usuario.celular" />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.celular.errors" class="invalid">
+    <div *ngIf="forms.controls.celular.errors.required">
+        El Email es un campo obligatorio
+
+    </div>
+   
+    <div *ngIf="forms.controls.celular.errors.pattern">
+        Solo deben ser numeros y de 9 digitos.
+    </div>
+
+</div>
+<!------------------------------------------------------------------------>
+
+                        
                         </div>
                         <div class="col-md-12">
                             <button id="btn_reg" type="submit" class="btn">Registrar</button>

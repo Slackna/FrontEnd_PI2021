@@ -4,8 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddUsuarioComponent } from './components/add-usuario/add-usuario.component';
-import { FormsModule } from '@angular/forms'; 
-import { ReactiveFormsModule } from '@angular/forms';
+
 import { AddVendedorComponent } from './components/add-vendedor/add-vendedor.component';
 import { AddProductoComponent } from './components/add-producto/add-producto.component';
 import { AddIndexComponent } from './components/add-index/add-index.component';
@@ -25,6 +24,15 @@ import { ListaCategoriJuguetesComponent } from './components/lista-categori-jugu
 import { AddDetallCompraComponent } from './components/add-detall-compra/add-detall-compra.component';
 import { AddPerfilUsuarioComponent } from './components/add-perfil-usuario/add-perfil-usuario.component';
 import { AddCompraComponent } from './components/add-compra/add-compra.component';
+import { FilterPipe } from './filter.pipe';
+import { Filter2Pipe } from './filter2.pipe';
+import { Filter3Pipe } from './filter3.pipe';
+import { AddPublicacionesUsuarioComponent } from './components/add-publicaciones-usuario/add-publicaciones-usuario.component';
+import { ComprasClienteComponent } from './components/compras-cliente/compras-cliente.component';
+import { CommonModule } from '@angular/common';  
+/////importar esta vaina
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -47,18 +55,25 @@ import { AddCompraComponent } from './components/add-compra/add-compra.component
     ListaCategoriJuguetesComponent,
     AddDetallCompraComponent,
     AddPerfilUsuarioComponent,
-    AddCompraComponent
+    AddCompraComponent,
+    FilterPipe,
+    Filter2Pipe,
+    Filter3Pipe,
+    AddPublicacionesUsuarioComponent,
+    ComprasClienteComponent,
+    
   ],
   imports: [
     
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-   
+    CommonModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
 
   ],
+ 
   providers: [interceptorProvider],
   bootstrap: [AppComponent],
 

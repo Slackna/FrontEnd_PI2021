@@ -13,7 +13,9 @@ export class ListaCategoriaIndustriasComponent implements OnInit {
   listaProductosIndu: Producto[] = [];  
 
     idCategoria=8
- 
+    filterPost= 0;
+    filterPost2= 0;
+    filterPost3= 0;
 
   constructor(private ProductoService:ProductoService) { }
  
@@ -33,6 +35,9 @@ export class ListaCategoriaIndustriasComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarProductosIndustria();
+    this.filterPost
+    this.filterPost2
+    this.filterPost3
   }
 
 }

@@ -2,7 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/producto.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from '../models/usuario.model';
 
 
@@ -19,14 +18,16 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
   registraProducto(data:Producto):Observable<any>{
-    return this.http.post(baseUrl  + 'registraProducto', data);
-  }
+    return this.http.post(baseUrl  + 'registraProducto' ,data)
 
+    
+  }
   
   listarProductoCategorias(data:number):Observable<any>{
     return this.http.get<Producto[]>(baseUrl + 'listaProductoByCat',{
     params: new HttpParams().set('idCategoria', data)
     })
+    
     ;
   }
   
@@ -39,5 +40,13 @@ export class ProductoService {
   public getUserId(nombre: string){
     return this.http.get<Usuario[]>(this.UsuarioId + `buscarUsuario/${nombre}`)
     
+  }
+
+  listarProductoUsuario(data:number):Observable<any>{
+    return this.http.get<Producto[]>(baseUrl + 'listaProductoByUsuario',{
+    params: new HttpParams().set('idUsuario', data)
+    })
+    
+    ;
   }
 }

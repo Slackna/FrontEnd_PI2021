@@ -13,6 +13,9 @@ export class ListaCategoriaElectrodomesticosComponent implements OnInit {
   listaProductos2: Producto[] = [];  
   
     idCategoria2=2
+    filterPost= 0;
+    filterPost2= 0;
+    filterPost3= 0;
     
     
  
@@ -36,6 +39,10 @@ export class ListaCategoriaElectrodomesticosComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarProductosxCategoria1();
+    this.filterPost
+    this.filterPost2
+    this.filterPost3
+   
   }
 
 }

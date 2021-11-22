@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-6">
                 <div class="search">
-                    <input type="text" placeholder="Buscar">
+                    <input type="text" class="form-control" name="filterPost" placeholder="Search..." >
                     <button><i class="fa fa-search"></i></button>
                 </div>
             </div>
@@ -194,8 +194,7 @@
             <div class="col-lg-2" *ngFor="let producto of  listaGeneral"  >
                 <div class="product-item">
                     <div class="product-title">
-                        <a href="#">{{producto.nombre}}</a>
-                       
+                        <a>{{producto.nombre}}</a>
                         <div class="ratting">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -211,12 +210,13 @@
                     </div>
                     <div class="product-price">
                         <div class="product-des">
-                            <a>Publicado Por:</a>
-                            <br>
+                            <a>Publicado Por: {{producto.usuario!.nombre}} </a>
+                            
                             
                         </div>
+                        <br>
                         <h3><span>$</span>{{producto.precio}}</h3>
-                        <a class="btn" routerLink="/addComprar/{{producto.idProducto}}"><i class="fa fa-heart"></i>Comprar</a> 
+                        <a class="btn" routerLink="/addComprar/{{producto.idProducto}}"><i class="fa fa-heart"></i>Ver Producto</a> 
                     </div>
                 </div>
             </div>
@@ -317,7 +317,20 @@
         </div>
     </div>
 </div>
- 
+<script>
+    window.watsonAssistantChatOptions = {
+        integrationID: "8d99c35f-0808-497e-89ca-3c7996192085", // The ID of this integration.
+        region: "us-south", // The region your integration is hosted in.
+        serviceInstanceID: "5b6d2273-f671-440c-b4a0-4407a9264a8b", // The ID of your service instance.
+        onLoad: function (instance) { instance.render(); }
+    };
+    setTimeout(function () {
+        const t = document.createElement('script');
+    })
+
+
+</script>
+
 
 
 <!-- Product Detail End -->

@@ -1,5 +1,6 @@
 import { Byte } from "@angular/compiler/src/util";
 import { Categoria } from "./categoria.model";
+import { Usuario } from "./usuario.model";
 
 export class Producto {
   idProducto?: number;
@@ -10,7 +11,9 @@ export class Producto {
   descripcion?: string; 
   condicion?: string;
   categoria?: Categoria; 
-  img1?: any;
-  idUsuario?: number;
+  img1?: Blob;
+  usuario?: Usuario;
+  fecha?: any;
+  uploadfile?: any;
   
 }

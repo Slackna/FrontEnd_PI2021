@@ -28,7 +28,7 @@
         </div>
     </div>
   </div>
-<form  method="post" id="form" (submit)="saveUsuario()">
+<form [formGroup]="forms"  method="post" id="form" (submit)="saveUsuario()">
 <div class="login">
     <div class="container-fluid">
         <div class="row">
@@ -37,50 +37,201 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Nombres</label>
-                            <input class="form-control" id="nombre"  type="text" placeholder="Nombres" name="nombre"  [(ngModel)]="usuario.nombre" /> 
-                            
+                            <input class="form-control" formControlName="nombre" id="nombre"  type="text" placeholder="Nombres" name="nombre"  [(ngModel)]="usuario.nombre" /> 
+<!------------------------------------------------------------------------>
+
+        <div *ngIf="submitted && forms.controls.nombre.errors" class="invalid">
+            <div *ngIf="forms.controls.nombre.errors.required">
+                El nombre es un campo obligatorio
+
+            </div>
+            <div *ngIf="forms.controls.nombre.errors.pattern">
+                El nombre es de 3 a 30 caracteres
+
+            </div>
+            
+
+        </div>
+<!------------------------------------------------------------------------>
+
                         </div>
                         <div class="col-md-6">
                             <label>Apellido Paterno</label>
-                            <input class="form-control" id="paterno"  type="text" placeholder="Apellido Paterno" name="paterno" minlength="5" maxlength="25" [(ngModel)]="usuario.paterno" />
+                            <input class="form-control" formControlName="paterno" id="paterno"  type="text" placeholder="Apellido Paterno" name="paterno" minlength="5" maxlength="25" [(ngModel)]="usuario.paterno" />
+                     
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.paterno.errors" class="invalid">
+    <div *ngIf="forms.controls.paterno.errors.required">
+        El Apellido Paterno es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.paterno.errors.pattern">
+        El Apellido Paterno  es de 3 a 30 caracteres
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+
                         </div>
 
                         <div class="col-md-6">
                             <label>Apellido Materno</label>
-                            <input class="form-control" id="materno" type="text" placeholder="Apellido Materno" name="materno" minlength="5" maxlength="25"  [(ngModel)]="usuario.materno" />
+                            <input class="form-control" formControlName="materno" id="materno" type="text" placeholder="Apellido Materno" name="materno" minlength="5" maxlength="25"  [(ngModel)]="usuario.materno" />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.materno.errors" class="invalid">
+    <div *ngIf="forms.controls.materno.errors.required">
+        El Apellido Materno  es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.materno.errors.pattern">
+        El Apellido Materno es de 3 a 30 caracteres
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+                        
+                        
                         </div>
 
                         <div class="col-md-6">
                             <label>DNI</label>
-                            <input class="form-control" id="dni" name="dni" type="text" placeholder="Coloque su DNI" minlength="8" maxlength="8" [(ngModel)]="usuario.dni"  />
+                            <input class="form-control" formControlName="dni" id="dni" name="dni" type="text" placeholder="Coloque su DNI" minlength="8" maxlength="8" [(ngModel)]="usuario.dni"  />
+
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.dni.errors" class="invalid">
+    <div *ngIf="forms.controls.dni.errors.required">
+        El Dni es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.dni.errors.pattern">
+        El Dni es de 8 caracteres
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+  
+                        
                         </div>
 
                         
                         <div class="col-md-6">
-                            <label> Direccion</label>
-                            <input class="form-control" id="direccion"  name="direccion" type="text" placeholder="Coloque su direccion" minlength="5" maxlength="25"  [(ngModel)]="usuario.direccion"/>
+                            <label> Dirección</label>
+                            <input class="form-control" formControlName="direccion" id="direccion"  name="direccion" type="text" placeholder="Coloque su direccion" minlength="5" maxlength="25"  [(ngModel)]="usuario.direccion"/>
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.direccion.errors" class="invalid">
+    <div *ngIf="forms.controls.direccion.errors.required">
+        La Direccion es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.direccion.errors.pattern">
+        La Direccion es de 3 a 30 caracteres
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+                        
                         </div>
 
                        
                         <div class="col-md-6">
                             <label> Celular </label>
-                            <input class="form-control" id="celular" name="celular"  placeholder="Numero de Celular" minlength="9" maxlength="9"  [(ngModel)]="usuario.celular" />
+                            <input class="form-control" formControlName="celular" id="celular" name="celular"  placeholder="Numero de Celular" minlength="9" maxlength="9"  [(ngModel)]="usuario.celular" />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.celular.errors" class="invalid">
+    <div *ngIf="forms.controls.celular.errors.required">
+        El Celular es un campo obligatorio
+
+    </div>
+    <div *ngIf="forms.controls.celular.errors.pattern">
+        El Celular es solo numeros
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+    
+                        
                         </div>
 
 
 
                         <div class="col-md-6">
                             <label>Usuario</label>
-                            <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Coloque su Usuario" [(ngModel)]="usuario.nombreUsuario"  />
+                            <input class="form-control" formControlName="nombreusuario" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Coloque su Usuario" [(ngModel)]="usuario.nombreUsuario"  />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.nombreusuario.errors" class="invalid">
+    <div *ngIf="forms.controls.nombreusuario.errors.required">
+        El Usuario es un campo obligatorio.
+
+    </div>
+    <div *ngIf="forms.controls.nombreusuario.errors.pattern">
+        No debe llevar espacio en blanco.
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+                        
                         </div>
                         <div class="col-md-6">
                             <label>Email</label>
-                            <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Coloque su Email" [(ngModel)]="usuario.email" /> 
-                        </div>
+                            <input class="form-control" formControlName="nombreusuarioc" id="nombreUsuarioc" name="nombreUsuarioc" type="text" placeholder="Coloque su Email" [(ngModel)]="usuario.email" /> 
+                       
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.nombreusuarioc.errors" class="invalid">
+    <div *ngIf="forms.controls.nombreusuarioc.errors.required">
+        El Email es un campo obligatorio.
+
+    </div>
+    <div *ngIf="forms.controls.nombreusuarioc.errors.pattern">
+        Solo se acepta emails.
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+                       </div>
                         
                         <div class="col-md-6">
                             <label>Contraseña</label>
-                            <input class="form-control" id="password" name="password" type="password" placeholder="Contraseña" [(ngModel)]="usuario.password" />
+                            <input class="form-control" formControlName="password" id="password" name="password" type="password" placeholder="Contraseña" [(ngModel)]="usuario.password" />
+<!------------------------------------------------------------------------>
+
+<div *ngIf="submitted && forms.controls.password.errors" class="invalid">
+    <div *ngIf="forms.controls.password.errors.required">
+        El nombre es un campo obligatorio
+
+    </div>
+    
+
+</div>
+<!------------------------------------------------------------------------>
+
+                        
                         </div>
                          <br>
                         <div class="col-md-12">

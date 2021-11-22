@@ -17,7 +17,9 @@ export class AddIndexComponent implements OnInit {
   listaGeneral:Producto[] =[]
   isLogged = false;
   nombreUsuario = '';
+
   
+
   constructor(private ProductoService:ProductoService,private tokenService: TokenService,private activatedRoute: ActivatedRoute,private router: Router) { }
 
   listarProductosGeneral(){

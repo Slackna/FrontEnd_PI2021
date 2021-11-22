@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
@@ -11,7 +11,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
   styleUrls: ['./add-usuario.component.css'],
 })
 export class AddUsuarioComponent implements OnInit {
-  constructor(private usuarioService:UsuarioService
+  constructor(private usuarioService:UsuarioService,
+    private formBuilder: FormBuilder
     ,private router: Router) 
     { }
 
@@ -19,10 +20,41 @@ export class AddUsuarioComponent implements OnInit {
 
 usuario: Usuario={ };
 
+/////////////////declara validaciones
+forms: FormGroup = this.formBuilder.group({
 
+  nombre : ['',[Validators.required, Validators.pattern('[a-zA-Z]{3,30}')]],
+  paterno : ['',[Validators.required, Validators.pattern('[a-zA-Z]{3,30}')]],
+  materno : ['',[Validators.required, Validators.pattern('[a-zA-Z]{3,30}')]],
+  dni : ['',[Validators.required,Validators.pattern('[0-9]{8}')]],
+  direccion : ['',[Validators.required,Validators.pattern('[a-zA-Z]{3,30}')]],
+  celular : ['',[Validators.required,Validators.pattern('[0-9]{9}')]],
+  nombreusuario : ['',[Validators.required,Validators.pattern('[a-zA-Z]{3,30}')]],
+  nombreusuarioc : ['',[Validators.required,Validators.email]],
+  password : ['',[Validators.required]]   
+
+
+})
+
+
+//////////
+submitted = false;
 
    saveUsuario(){
     
+
+    ///////////////
+    this.submitted = true;
+    ////////////
+
+
+    //////
+    if(this.forms.invalid){
+
+      return;
+    }
+    ///////////
+
      this.usuarioService.create(this.usuario).subscribe(
 
 
@@ -36,7 +68,7 @@ usuario: Usuario={ };
               }else{
               console.log(response.mensaje);
               alert(response.mensaje),
-              this.router.navigate(['addIndex'])
+              this.router.navigate(['addLogin'])
               }
             },
             error =>{
@@ -53,4 +85,3 @@ usuario: Usuario={ };
   
 
 }
-
