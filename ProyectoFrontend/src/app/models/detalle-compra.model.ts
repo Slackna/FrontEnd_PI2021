@@ -4,7 +4,7 @@ import { Producto } from "./producto.model";
 export class DetalleCompra {
 
     idDetalle?: number;
-    FechaCompras?: Date;
+    FechaRegistro?: any;
     producto?: Producto; 
     compras?: Compras;
 }

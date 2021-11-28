@@ -13,11 +13,19 @@ export class ComprasClienteComponent implements OnInit {
   listaComprasporUsuario: Compras[] = [];  
   constructor(private comprasService: CompraService,private tokenService: TokenService) { }
 
+
+  getEstado(aux:number):string{
+    return aux ==1 ? "Pagado" : "Entregado";
+  }
+
+  getTextoBotonEstado(aux:number):string{
+    return aux ==1 ? "Entregado" : "Pagado";
+  }
   listarComprasxUsuario(){
     this.idUsuario=parseInt(this.tokenService.getUserID())
     this.comprasService.listarComprasPorUsuario(this.idUsuario).subscribe(
       reponse => {
-        console.log("ListoProductos");
+        console.log("ListoProductos",);
         this.listaComprasporUsuario = reponse;
       },
       error =>{

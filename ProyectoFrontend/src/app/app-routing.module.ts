@@ -20,6 +20,9 @@ import { AddPerfilUsuarioComponent } from './components/add-perfil-usuario/add-p
 import { AddPublicacionesUsuarioComponent } from './components/add-publicaciones-usuario/add-publicaciones-usuario.component';
 import { AddCompraComponent } from './components/add-compra/add-compra.component';
 import { ComprasClienteComponent } from './components/compras-cliente/compras-cliente.component';
+import { AddVentasComponent } from './components/add-ventas/add-ventas.component';
+import { AddFacturaComponent } from './components/add-factura/add-factura.component';
+import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 
 
 
@@ -45,7 +48,10 @@ const routes: Routes = [
   {path:"addPerfil", component:AddPerfilUsuarioComponent},
   {path:"addPublicaciones", component:AddPublicacionesUsuarioComponent},
   {path:"addCompra/:id", component:AddCompraComponent},
+  {path:"addVentas", component:AddVentasComponent},
   {path:"addComprasCliente", component:ComprasClienteComponent},
+  {path:"addFactura", component:AddFacturaComponent},
+  {path:"addEstadisticas", component:EstadisticasComponent},
   {path: '**', redirectTo: '/addIndex'},
  
 ];

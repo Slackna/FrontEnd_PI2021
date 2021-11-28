@@ -6,11 +6,12 @@ import { ProductoService } from 'src/app/services/producto.service';
 import { Router, NavigationStart, Event as NavigationEvent, ActivatedRoute } from '@angular/router';
  
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TokenService } from 'src/app/services/token.service';
 import { Usuario } from 'src/app/models/usuario.model';
 import { UsuarioService } from 'src/app/services/usuario.service';
+
 
 @Component({
   selector: 'app-add-producto',
@@ -26,7 +27,11 @@ export class AddProductoComponent implements OnInit {
   public previsualizacion!: string;
   archivoCapturado: any;
 
+   data :any ;
+
   lstCategoria: Categoria[] =[];
+
+  
     producto:Producto={
       categoria: {
         id_categoria: 0
@@ -42,7 +47,7 @@ export class AddProductoComponent implements OnInit {
       ///////validaciones
       private formBuilder: FormBuilder,
        private httpClient: HttpClient
-      ,private tokenService: TokenService,private activatedRoute: ActivatedRoute,private router: Router
+      ,private tokenService: TokenService,private activatedRoute: ActivatedRoute,private router: Router,private http: HttpClient
       ) { 
  
     
@@ -73,18 +78,16 @@ submitted = false;
 
   registra(){
    
-
-    this.archivos.forEach((item: any) => {
-    this.blobFile(item).then((res: any) => {
-        this.producto.img1 = res.base;
-      })
-    });
- 
-      this.producto.uploadfile= this.archivoCapturado;
+    
       this.producto.usuario!.idUsuario=parseInt(this.tokenService.getUserID())
-      console.log('producto',this.producto)
-      this.ProductoService.registraProducto(this.producto).subscribe(
+      this.data.append('nuevoProducto', this.producto)
+      console.log('producto',this.data.get("files"))
+      
+      
+     
+    this.ProductoService.registraProducto(this.data).subscribe(
       reponse => {
+        
         console.log(reponse.mensaje);
         alert(reponse.mensaje);
         this.router.navigate(['addIndex'])
@@ -93,49 +96,68 @@ submitted = false;
       error =>{
         console.log(error);
       },
-
+ 
     )
   }
+ 
+  prueba(event :any) {
 
+   let file=event.target.files[0]
+   let nombresarchivos=""
+   const arrayfile=[]
+   for (let i = 0; i < event.target.files.length; i++){
+      nombresarchivos =nombresarchivos+ event.target.files[i].name +"," 
+   }
+   let archivonombre = file.name
+   this.producto.img1=nombresarchivos
+    
+   //this.data.append("imagenes",event.target.files[0])
+   //console.log(this.data)
+   this.data=new FormData()
+   this.data.append("files",(new Blob([JSON.stringify(event.target.files[0])], {type: 'application/json'})));
+   console.log(this.data.get("files"))
+  }
  
   ngOnInit(): void {
     
   }
-
-  onFileSelected(event: any){
-      this.archivoCapturado = event.target.files[0];
-      console.log('img',event)
-      this.blobFile(this.archivoCapturado).then((imagen :any)=>{
-        this.previsualizacion = imagen.base; 
-       })
-      this.archivos.push(this.archivoCapturado);
-      console.log(event.target.files)
-   
-  } 
-
- blobFile = async ($event: any|void) => new Promise((resolve, reject) => {
-    try {
-      const unsafeImg = window.URL.createObjectURL($event);
-      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
-      const reader = new FileReader();
-      reader.readAsDataURL($event);
-      reader.onload = () => {
-        resolve({
-          blob: $event,
-          image,
-          base: reader.result
-        });
-      };
-      reader.onerror = error => {
-        resolve({
-          blob: $event,
-          image,
-          base: null
-        });
-      };
-
-    } catch (e) {
-      return null;
-    }
-  })
+  
 }
+// onFileSelected(event: any){
+//   this.archivoCapturado = event.target.files[0];
+//   console.log('img',event);
+//   (this.archivoCapturado).then((imagen :any)=>{
+//     this.previsualizacion = imagen.base; 
+//    })
+//  this.archivos.push(this.archivoCapturado);
+//  console.log(event.target.files)
+
+// } 
+ 
+
+ //blobFile = async ($event: any|void) => new Promise((resolve, reject) => {
+   // try {
+  //    const unsafeImg = window.URL.createObjectURL($event);
+    //  const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+    //  const reader = new FileReader();
+    //  reader.readAsDataURL($event);
+    //  reader.onload = () => {
+     //   resolve({
+       //   blob: $event,
+        //  image,
+       //   base: reader.result
+      //  });
+     // };
+    //  reader.onerror = error => {
+     //   resolve({
+      //    blob: $event,
+     //     image,
+        //  base: null
+     //   });
+   //   };
+
+   // } catch (e) {
+   //   return null;
+   // }
+ // })
+//}

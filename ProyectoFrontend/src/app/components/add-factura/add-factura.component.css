@@ -1,0 +1,23 @@
+#htmlData{
+    width: 1400px;
+    background-color: white;
+}
+.imagen{
+    float:right;
+   
+}
+.compra{
+   padding-left: 500px;
+}
+.factura{
+    color: black;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.h62{
+    color: black;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.button{
+    padding-left:865px;
+}

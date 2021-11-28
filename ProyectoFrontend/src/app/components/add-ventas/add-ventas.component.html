@@ -1,0 +1,138 @@
+<app-menu></app-menu>
+<!-- Bottom Bar Start -->
+<div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="addIndex">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Buscar">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="user">
+                    <a href="wishlist.html" class="btn wishlist">
+                        <i class="fa fa-heart"></i>
+                        <span>(0)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- Cart Start -->
+  <div class="cart-page" >
+    <div class="container-fluid">
+        <div class="row"  >
+            <div class="col-lg-12">
+                <div class="cart-page-inner">
+                    <div>
+                        <h3 class="">Pedidos</h3>
+                        <br>
+                    </div>
+                   
+                    <button   class="btn btn-primary btn-"type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-success' style="width: 180px">Detalles de Entrega</button>
+                    <br>
+                    <br>
+                    <div class="table-responsive"  >
+                        <table class="table table-bordered" *ngFor="let aux of  listaPedidoporUsuario " >
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th style="width: 10%">Codigo de Pedido</th>
+                                    <th style="width: 10%">Fecha</th>
+                                    <th style="width: 10%">Nombre Producto</th>
+                                    <th style="width: 10%" >Estado</th>
+                                    <th style="width: 7%">Atiende</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle" >
+                                <tr>
+                                    <td>{{aux.idPedido}}</td>
+                                    <td>{{aux.detalle!.fecha}}</td>
+                                    <td>{{aux.detalle!.nombreProducto}}</td>
+                                    <td>{{getEstado(aux.detalle!.estado==null?0:aux.detalle!.estado)}}</td>
+                                   <td><button (click)="actualizaEstado(aux.detalle!)" type="button" style="width: 90px" class="btn btn-primary btn-sm" >Atender</button></td>
+                                  
+                                </tr>
+                            </tbody>
+                            <!-- (click)="MostrarDataporPedido(aux.detalle!.idCompras!)" -->
+                        </table>
+                        
+                    </div>
+                   
+                   
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+<div class="modal fade"  id="idModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" style="max-width: 70%;">
+        <div class="modal-content" >
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Datos de Entrega</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div class="modal-body" >
+                <div class="table-responsive" >
+                    <table class="table table-bordered"  *ngFor="let aux of listaPedidoporUsuario" >
+                        
+                       
+                        <thead class="thead-dark"  >
+                            <tr>
+                                <th>Codigo de Pedido</th>
+                                <th>Nombre de Cliente</th>
+                                <th>Contacto</th>
+                                <th>Direccion de Entrega</th>
+                                <th>Provincia</th>
+                                <th>Distrito</th>
+                                <th>Pais</th>
+                               
+                                
+                            </tr>
+                        </thead>
+                        <tbody class="align-middle" >
+                            <tr>
+                                <td>{{aux.idPedido}}</td>
+                                <td>{{aux.detalle!.usuario!.nombre}} {{aux.detalle!.usuario!.paterno}} {{aux.detalle!.usuario!.materno}}</td>
+                                <td>{{aux.detalle!.usuario!.email}} <br>
+                                    {{aux.detalle!.usuario!.celular}}
+                                </td>
+                                <td>{{aux.detalle!.direccion}}</td>
+                                <td>{{aux.detalle!.provincia}}</td>
+                                <td>{{aux.detalle!.distrito}}</td>
+                                <td>{{aux.detalle!.pais}}</td>
+                            </tr>
+                        </tbody>
+                 
+                    </table>
+                    
+                </div>
+                
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<!-- Cart End -->
+   
+

@@ -1,9 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Producto } from '../models/producto.model';
 import { Usuario } from '../models/usuario.model';
-
 
 
 const baseUrl = "http://localhost:8095/producto/";
@@ -11,15 +11,17 @@ const baseUrl = "http://localhost:8095/producto/";
   providedIn: 'root'
 })
 export class ProductoService {
- 
 
    UsuarioId="http://localhost:8095/rest/";
   
+  
 
   constructor(private http: HttpClient) { }
-  registraProducto(data:Producto):Observable<any>{
-    return this.http.post(baseUrl  + 'registraProducto' ,data)
-
+  registraProducto(data:FormData):Observable<any>{
+    const req=new HttpRequest('POST', baseUrl  + 'registraProducto' ,data);
+  // return this.http.post(baseUrl  + 'registraProducto' ,data );
+//, {headers: {'Content-Type': 'undefined'}}
+    return this.http.request(req);
     
   }
   

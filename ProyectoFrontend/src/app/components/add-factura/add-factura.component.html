@@ -1,0 +1,199 @@
+<app-menu></app-menu>
+<!-- Bottom Bar Start -->
+<div class="bottom-bar">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="addIndex">
+                        <img src="assets/img/logo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Buscar">
+                    <button><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="user">
+                    <a href="wishlist.html" class="btn wishlist">
+                        <i class="fa fa-heart"></i>
+                        <span>(0)</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+  </div><!-- Breadcrumb Start -->
+<!-- <div class="container">
+  <div id="htmlData" >
+    <div class="row">
+        <div class="col-xs-10 ">
+            <h1>Factura</h1>
+        </div>
+        
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-xs-10">
+            <h1 class="h6">Luis Cabrera Benito</h1>
+        </div>
+        <div class="col-xs-5 text-center">
+            <strong>Fecha</strong>
+            <br>
+            2021-05-03 <br>
+            <strong>Factura No.</strong>
+            <br>
+            1
+        </div>
+    </div>
+    <hr>
+    <div class="row text-center" style="margin-bottom: 2rem;">
+        <div class="col-xs-12">
+            <h1 class="h2">Cliente</h1>
+            <strong>Luis Cabrera Benito</strong>
+        </div>
+        <br>
+        <div class="col-xs-12">
+            <h1 class="h2">Remitente</h1>
+            <strong>Luis Cabrera Benito</strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered mt-4">
+                <thead>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-right">Subtotal</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Descuento</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Subtotal con descuento</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">Impuestos</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" class="text-right">
+                            <h4>Total</h4>
+                        </td>
+                        <td>
+                            <h4></h4>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <p class="h5">Gracias por su compra</p>
+            <button class="btn col col-lg-9 btn-danger btn-block ml-4" (click)="downloadPDF()">Download PDF</button>
+        </div>
+    </div>
+</div>
+</div> -->
+
+
+
+ <div class="container" >
+    <div class="row">
+      <div id="htmlData" >
+        <div class="imagen">
+            <img class="img img-responsive" src="assets/img/logofac.png" alt="Logotipo" height="120px" width="120px" >
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="col-xs-10 ">
+                <h1 class="factura">Factura</h1>
+         </div>
+        <hr>
+        <div class="col-xs-5 text-right" >
+            <strong class="factura">Fecha</strong>
+                <br>
+                <p class="h62" *ngFor="let detalle of lista">{{detalle.compras!.fecha}}</p> <br>
+                <strong class="factura">Factura No.</strong>
+                <br>
+                <p  class="h62">1</p>
+                <div class="col-xs-5  text-left" >
+                    <h1 class="h62">Tienda E-STORE</h1>
+                    <h1 class="h62">https://e-store.pe</h1>
+                </div>
+        </div>
+       
+        <hr>
+        
+            <div class="col-xs-12">
+                <h1  class="h62">Cliente:</h1>
+                <p class="h62" *ngFor="let detalle of lista">{{detalle.compras!.usuario!.nombre}} {{detalle.compras!.usuario!.paterno}} {{detalle.compras!.usuario!.materno}}</p>
+            </div>
+            <br>
+       <p class="h62">Detalles del Pedido</p>
+        <table class="table table-bordered mt-4 ">
+          <tr class="table-primary">
+            <th>Sub Total</th>
+            <th>Envio</th>
+            <th>Codigo Postal</th>
+            <th>Nota</th>
+          </tr>
+          <tr *ngFor="let detalle of lista">
+            <td>{{detalle.compras!.monto}}</td>
+            <td>{{detalle.compras!.direccion}}
+                {{detalle.compras!.distrito}},
+                {{detalle.compras!.provincia}},
+                {{detalle.compras!.pais}}
+            </td>
+            <td>{{detalle.compras!.codigoPostal}}</td>
+            <td>{{detalle.compras!.nota}}</td>
+          </tr>
+        </table>
+        <p class="h62">Producto</p>
+        <table class="table table-bordered mt-4 ">
+          <tr class="table-primary">
+            <th>Numero Producto</th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>DNI</th>
+          </tr>
+          <tr *ngFor="let detalle of lista" >
+            <td>{{detalle.producto!.idProducto}}</td>
+            <td>{{detalle.producto!.nombre}}</td>
+            <td>{{detalle.producto!.precio}}</td>
+            <td>{{detalle.compras!.usuario!.dni}}</td>
+          </tr>
+        </table>
+        <div class="compra">
+            <br><p class="h62">Gracias por su compra</p>
+    </div>
+      </div>
+     
+        
+    </div>
+  </div>
+  
+  
+  <div class="button">
+    
+    <button class="btn col col-lg-2 btn-danger btn-block ml-4 " (click)="downloadPDF()">Download PDF</button>
+  </div> 

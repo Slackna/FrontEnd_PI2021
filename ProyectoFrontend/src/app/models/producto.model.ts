@@ -11,7 +11,7 @@ export class Producto {
   descripcion?: string; 
   condicion?: string;
   categoria?: Categoria; 
-  img1?: Blob;
+  img1?: string;
   usuario?: Usuario;
   fecha?: any;
   uploadfile?: any;

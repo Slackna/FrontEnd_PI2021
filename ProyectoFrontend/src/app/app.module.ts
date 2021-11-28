@@ -32,6 +32,9 @@ import { ComprasClienteComponent } from './components/compras-cliente/compras-cl
 import { CommonModule } from '@angular/common';  
 /////importar esta vaina
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddVentasComponent } from './components/add-ventas/add-ventas.component';
+import { AddFacturaComponent } from './components/add-factura/add-factura.component';
+import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
 
 
 @NgModule({
@@ -61,6 +64,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Filter3Pipe,
     AddPublicacionesUsuarioComponent,
     ComprasClienteComponent,
+    AddVentasComponent,
+    AddFacturaComponent,
+    EstadisticasComponent,
     
   ],
   imports: [

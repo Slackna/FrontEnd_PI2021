@@ -6,6 +6,12 @@ export class Compras {
     fecha?: any;
     monto?: number; 
     nombreProducto?: string;
-    Estado?: string; 
+    estado?: number; 
+    direccion?: string;
+    pais?: string;
+    distrito?: string;
+    provincia?: string;
+    codigoPostal?: string;
+    nota?: string;
     usuario?: Usuario;
 }

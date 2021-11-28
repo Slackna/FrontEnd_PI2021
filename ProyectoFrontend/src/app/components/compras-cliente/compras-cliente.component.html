@@ -33,22 +33,23 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <div class="cart-page-inner">
+                <div class="cart-page-inner" >
                     <div>
                         <h3 class="">Tus Compras</h3>
                         <br>
                     </div>
-                    <div class="table-responsive"  >
-                        <table class="table table-bordered"   >
+                    <div class="table-responsive" >
+                        <table class="table table-bordered"   *ngFor="let compra of  listaComprasporUsuario" >
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Productos</th>
                                     <th>Fecha</th>
                                     <th>Precio</th>
-                                    
+                                    <th>Estado</th>
+                                    <th>Factura</th>
                                 </tr>
                             </thead>
-                            <tbody class="align-middle" *ngFor="let compra of  listaComprasporUsuario">
+                            <tbody class="align-middle">
                                 <tr>
                                     <td>
                                         <div class="img">
@@ -57,12 +58,16 @@
                                         </div>
                                     </td>
                                     <td>{{compra.fecha}}</td>
-                                    <td> {{compra.monto}}</td>
-                                    
+                                    <td>{{compra.monto}}</td>
+                                    <td>{{getEstado(compra.estado==null?0:compra.estado)}}</td>
+                                    <td><button routerLink="/addFactura/{{compra.idCompras}}" type="button" style="width: 90px" class="btn btn-primary btn-sm" >Ver factura</button></td>
                                 </tr>
                             </tbody>
                         </table>
+                       
                     </div>
+                   
+                    
                 </div>
             </div>
             
