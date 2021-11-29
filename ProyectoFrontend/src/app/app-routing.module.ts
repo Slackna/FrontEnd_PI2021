@@ -16,7 +16,7 @@ import { ListaCategoriaHogarmueblesComponent } from './components/lista-categori
 import { ListaCategoriaIndustriasComponent } from './components/lista-categoria-industrias/lista-categoria-industrias.component';
 import { ListadoCategoriaTecnologiaComponent } from './components/listado-categoria-tecnologia/listado-categoria-tecnologia.component';
 import { AddDetallCompraComponent } from './components/add-detall-compra/add-detall-compra.component';
-import { AddPerfilUsuarioComponent } from './components/add-perfil-usuario/add-perfil-usuario.component';
+
 import { AddPublicacionesUsuarioComponent } from './components/add-publicaciones-usuario/add-publicaciones-usuario.component';
 import { AddCompraComponent } from './components/add-compra/add-compra.component';
 import { ComprasClienteComponent } from './components/compras-cliente/compras-cliente.component';
@@ -45,12 +45,11 @@ const routes: Routes = [
   {path:"addListaCategoriaBebes", component:ListaCategoriaBebesComponent},
   {path:"addListaCategoriaJuguetes", component:ListaCategoriJuguetesComponent},
   {path:"addComprar/:id", component:AddDetallCompraComponent},
-  {path:"addPerfil", component:AddPerfilUsuarioComponent},
   {path:"addPublicaciones", component:AddPublicacionesUsuarioComponent},
   {path:"addCompra/:id", component:AddCompraComponent},
   {path:"addVentas", component:AddVentasComponent},
   {path:"addComprasCliente", component:ComprasClienteComponent},
-  {path:"addFactura", component:AddFacturaComponent},
+  {path:"addFactura/:id", component:AddFacturaComponent},
   {path:"addEstadisticas", component:EstadisticasComponent},
   {path: '**', redirectTo: '/addIndex'},
  

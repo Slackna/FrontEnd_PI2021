@@ -27,7 +27,7 @@ export class AddProductoComponent implements OnInit {
   public previsualizacion!: string;
   archivoCapturado: any;
 
-   data :any ;
+   data :FormData=new FormData();
 
   lstCategoria: Categoria[] =[];
 
@@ -79,13 +79,10 @@ submitted = false;
   registra(){
    
     
-      this.producto.usuario!.idUsuario=parseInt(this.tokenService.getUserID())
-      this.data.append('nuevoProducto', this.producto)
-      console.log('producto',this.data.get("files"))
-      
+      this.producto.usuario!.idUsuario=parseInt(this.tokenService.getUserID())     
       
      
-    this.ProductoService.registraProducto(this.data).subscribe(
+    this.ProductoService.registraProducto(this.producto).subscribe(
       reponse => {
         
         console.log(reponse.mensaje);
@@ -104,21 +101,34 @@ submitted = false;
 
    let file=event.target.files[0]
    let nombresarchivos=""
-   const arrayfile=[]
+   let nombres=""
+   
    for (let i = 0; i < event.target.files.length; i++){
+
       nombresarchivos =nombresarchivos+ event.target.files[i].name +"," 
+      
+      this.data.append("files", event.target.files[i])
+
+      this.ProductoService.registraImagenes(this.data).subscribe(
+        error=>{
+          event.preventDefault()
+          console.log(error)
+        },
+      )
    }
-   let archivonombre = file.name
-   this.producto.img1=nombresarchivos
+
+   console.log(nombres)
+  //  let archivonombre = file.name
+  //  this.producto.img1=nombresarchivos
     
    //this.data.append("imagenes",event.target.files[0])
    //console.log(this.data)
-   this.data=new FormData()
-   this.data.append("files",(new Blob([JSON.stringify(event.target.files[0])], {type: 'application/json'})));
-   console.log(this.data.get("files"))
+  //  this.data.append("files",(new Blob([JSON.stringify(event.target.files[0])], {type: 'application/json'})));
+  //  console.log(this.data.get("files"))
   }
  
   ngOnInit(): void {
+   
     
   }
   

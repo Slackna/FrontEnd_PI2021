@@ -42,11 +42,12 @@
                         <table class="table table-bordered"   *ngFor="let compra of  listaComprasporUsuario" >
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>Productos</th>
-                                    <th>Fecha</th>
-                                    <th>Precio</th>
-                                    <th>Estado</th>
-                                    <th>Factura</th>
+                                    <th style="width: 10%">Productos</th>
+                                    <th style="width: 10%">Fecha</th>
+                                    <th style="width: 10%">Precio</th>
+                                    <th style="width: 10%">Estado</th>
+                                    <th style="width: 10%">Factura</th>
+                                    <th style="width: 10%">Factura</th>
                                 </tr>
                             </thead>
                             <tbody class="align-middle">
@@ -61,6 +62,7 @@
                                     <td>{{compra.monto}}</td>
                                     <td>{{getEstado(compra.estado==null?0:compra.estado)}}</td>
                                     <td><button routerLink="/addFactura/{{compra.idCompras}}" type="button" style="width: 90px" class="btn btn-primary btn-sm" >Ver factura</button></td>
+                                    <td><button  type="button" style="width: 190px" class="btn btn-primary btn-sm" >Ver Seguimiento</button></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -191,7 +191,7 @@
             <h1>Productos nuevos</h1>
         </div>
         <div class="row align-items-center product-slider product-slider-4">
-            <div class="col-lg-2" *ngFor="let producto of  listaGeneral"  >
+            <div class="col-lg-2" *ngFor="let producto of  listaGeneral  | slice:0:12; let i=index"  >
                 <div class="product-item">
                     <div class="product-title">
                         <a>{{producto.nombre}}</a>
@@ -203,10 +203,8 @@
                             <i class="fa fa-star"></i>
                         </div>
                     </div>
-                    <div class="product-image">
-                        <a href="product-detail.html">
-                            <img src="assets/img/product-1.jpg" alt="Product Image">
-                        </a>
+                    <div class="product-image" >
+                        <img src="assets/img/descarga.jpg" alt="Product Image">
                     </div>
                     <div class="product-price">
                         <div class="product-des">
@@ -317,6 +315,7 @@
         </div>
     </div>
 </div>
+
 <script>
     window.watsonAssistantChatOptions = {
         integrationID: "8d99c35f-0808-497e-89ca-3c7996192085", // The ID of this integration.

@@ -38,13 +38,12 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav ml-auto">
                     <div class="nav-item dropdown">
-                        <a *ngIf="isLogged" href="product-detail.html" data-toggle="dropdown" class="nav-link dropdown-toggle"><i class="fas fa-user"></i> {{nombreUsuario}}</a>
+                        <a *ngIf="isLogged" href="product-detail.html" style="padding-right: 100px;"data-toggle="dropdown" class="nav-link dropdown-toggle"><i class="fas fa-user"></i> {{nombreUsuario}}</a>
                         <div class="dropdown-menu">
-                        <a routerLink="/addPerfil" class="dropdown-item">Mis Datos</a>
+                        <a routerLink="/addVentas" class="dropdown-item">Mis Datos</a>
                           <!-- <a routerLink="/addProducto" class="dropdown-item">Publicar</a> -->
                           <a  routerLink="/addComprasCliente" class="dropdown-item">Mis Compras</a>
                           <a  routerLink="/addPublicaciones" class="dropdown-item">Mis Publicaciones</a>
-                          <a  routerLink="/addVentas" class="dropdown-item">Mis Ventas</a>
                           <a   routerLink="/addIndex" class="dropdown-item" *ngIf="isLogged" (click)="onLogOut()">Salir</a>
                           </div>
                           </div>

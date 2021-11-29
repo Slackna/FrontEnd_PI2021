@@ -32,7 +32,7 @@ export class AddFacturaComponent implements OnInit {
     this.idCompras=this.activatedRoute.snapshot.params.id;
     this.detalleService.lista(this.idCompras).subscribe(
       reponse => {
-        console.log("ListoGeneral",this.lista);
+        console.log("Factura",this.lista);
         this.lista = reponse;
       },
       error =>{

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Compras } from 'src/app/models/compras.model';
 import { DetalleCompra } from 'src/app/models/detalle-compra.model';
 import { Pedido } from 'src/app/models/pedido.model';
+import { Usuario } from 'src/app/models/usuario.model';
 import { CompraService } from 'src/app/services/compra.service';
 import { TokenService } from 'src/app/services/token.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-add-ventas',
@@ -13,21 +15,6 @@ import { TokenService } from 'src/app/services/token.service';
 export class AddVentasComponent implements OnInit {
  
 
-  // compra: Compras = { 
-  //   idCompras:0,
-  //   fecha:"",
-  //   direccion:"",
-  //   pais:"",
-  //   distrito:"",
-  //   provincia:"",
-  //   codigoPostal:"",
-  //   usuario:{
-  //     idUsuario: 0,
-  //   },
-  //   estado:1,
-  //   monto:0,
-  //   nombreProducto:""
-  // }
 
   pedido: Pedido = { 
     idPedido:0,
@@ -40,20 +27,25 @@ export class AddVentasComponent implements OnInit {
       idUsuario: 0,
     },
   }
-
-
+  nombreUsuario = '';
+  isLogged = false;
   idUsuario: number=0;
   listaPedidoporUsuario: Pedido[] = [];  
+  listaComprasporUsuario: Compras[] = []; 
+ usuario:Usuario={
+   idUsuario: parseInt(this.tokenService.getUserID()),
+   
+ }
 
 
   
-  constructor(private comprasService: CompraService,private tokenService: TokenService) { }
+  constructor(private comprasService: CompraService,private tokenService: TokenService,private usuarioService:UsuarioService) { }
   getEstado(aux:number):string{
-    return aux ==1 ? "Pagado" : "Entregado";
+    return aux ==1 ? "Pagado" : "Enviado";
   }
 
   getTextoBotonEstado(aux:number):string{
-    return aux ==1 ? "Entregado" : "Pagado";
+    return aux ==1 ? "Enviado" : "Pagado";
   }
 
   listarVentasxUsuario(){
@@ -70,6 +62,14 @@ export class AddVentasComponent implements OnInit {
   }
   ngOnInit(): void {
     this.listarVentasxUsuario();
+    this.listarComprasxUsuario();
+    if (this.tokenService.getToken()!="{}") {
+      this.isLogged = true;
+      this.nombreUsuario = this.tokenService.getUserName();
+    
+    } else {
+      this.isLogged = false;
+    }
   }
   actualizaEstado(aux:Compras){
     console.log(" ==> En actualizaEstado() ");
@@ -91,7 +91,36 @@ export class AddVentasComponent implements OnInit {
         },
     );
   }
-  
+ 
+  listarComprasxUsuario(){
+    this.idUsuario=parseInt(this.tokenService.getUserID())
+    this.comprasService.listarComprasPorUsuario(this.idUsuario).subscribe(
+      reponse => {
+        console.log("ListoProductos",);
+        this.listaComprasporUsuario = reponse;
+      },
+      error =>{
+        console.log(error);
+      },  
+    )  
+  }
+  onLogOut(): void {
+    this.tokenService.logOut();
+  }
+  actualizaContra(aux:Usuario){
+    console.log(" ==> En actualizaContra() ");
+    
+    //Cambia el estado
+    this.usuario=aux;
+    this.usuarioService.actualiza(this.usuario).subscribe(
+        response =>{
+              console.log(response.mensaje);
+        },
+        error => {
+            console.log(error);
+        },
+    );
+  }
 
 
 }

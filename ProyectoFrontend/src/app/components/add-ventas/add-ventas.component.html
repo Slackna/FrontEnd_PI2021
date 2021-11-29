@@ -28,56 +28,193 @@
         </div>
     </div>
   </div>
-  <!-- Cart Start -->
-  <div class="cart-page" >
+  
+
+<!-- My Account Start -->
+<div class="my-account">
     <div class="container-fluid">
-        <div class="row"  >
-            <div class="col-lg-12">
-                <div class="cart-page-inner">
-                    <div>
-                        <h3 class="">Pedidos</h3>
-                        <br>
-                    </div>
-                   
-                    <button   class="btn btn-primary btn-"type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-success' style="width: 180px">Detalles de Entrega</button>
-                    <br>
-                    <br>
-                    <div class="table-responsive"  >
-                        <table class="table table-bordered" *ngFor="let aux of  listaPedidoporUsuario " >
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th style="width: 10%">Codigo de Pedido</th>
-                                    <th style="width: 10%">Fecha</th>
-                                    <th style="width: 10%">Nombre Producto</th>
-                                    <th style="width: 10%" >Estado</th>
-                                    <th style="width: 7%">Atiende</th>
-                                   
-                                </tr>
-                            </thead>
-                            <tbody class="align-middle" >
-                                <tr>
-                                    <td>{{aux.idPedido}}</td>
-                                    <td>{{aux.detalle!.fecha}}</td>
-                                    <td>{{aux.detalle!.nombreProducto}}</td>
-                                    <td>{{getEstado(aux.detalle!.estado==null?0:aux.detalle!.estado)}}</td>
-                                   <td><button (click)="actualizaEstado(aux.detalle!)" type="button" style="width: 90px" class="btn btn-primary btn-sm" >Atender</button></td>
-                                  
-                                </tr>
-                            </tbody>
-                            <!-- (click)="MostrarDataporPedido(aux.detalle!.idCompras!)" -->
-                        </table>
-                        
-                    </div>
-                   
-                   
+        <div class="row">
+            <div class="col-md-3">
+                <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fa fa-tachometer-alt"></i>Tablero</a>
+                    <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i>Pedidos</a>
+                    <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Mis Compras</a>
+                    <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Envios</a>
+                    <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Detalles de cuenta</a>
+                    <a class="nav-link" routerLink="/addIndex"  *ngIf="isLogged" (click)="onLogOut()"><i class="fa fa-sign-out-alt"></i>Cerrar Sesión</a>
+                    
                 </div>
             </div>
-            
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
+                        <h4>Tablero</h4>
+                        <div class="Compraventa">
+                            <div class="Compraventa1">
+                                
+                                
+                            <h4>1. Ingresa a tu cuenta</h4>
+                                <p>Ingresa a tu cuenta y haz clic en la opción Vender.
+                
+                                </p>
+                            <h4>2.  Escoge que deseas publicar</h4>    
+                                <p>
+                
+                Escribe un título para tu publicación. Cuanto más preciso sea el título más fácil será para tus compradores saber que ofreces lo que están buscando. Conoce cómo titular correctamente.
+                Selecciona la categoría de tu producto. Tomando el título de la publicación, te sugerimos una categoría para el producto que deseas vender. Verifica que se adapte a lo que estás ofreciendo o escoge otras. Puedes buscar en qué categoría publica tu competencia para asegurarte de estar publicando de forma correcta.</p>
+                
+                            <h4>
+                                3.  Completa la informacion de tu producto  
+                            </h4>
+                            <p>
+                                Ingresa fotos de tu producto</p>
+                             <p>   Indica el stock</p>
+                              <p>  Completa el código universal de tu producto </p>
+                             <p>   Completa la ficha técnica
+                            </p>
+                            <h4>4.  Ingresa el precio de tu prodcuto</h4>
+                            <p>Ingresa el precio que desees</p>
+                            </div>
+                
+                          
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
+                        <button   class="btn btn-primary btn-"type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-success' style="width: 180px">Detalles de Entrega</button>
+                        <br>
+                        
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered"  *ngFor="let aux of  listaPedidoporUsuario ">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th style="width: 10%">Codigo de Pedido</th>
+                                        <th style="width: 10%">Fecha</th>
+                                        <th style="width: 10%">Nombre Producto</th>
+                                        <th style="width: 10%" >Estado</th>
+                                        <th style="width: 7%">Atiende</th>
+                                       
+                                    </tr>
+                                </thead>
+                                <tbody class="align-middle" >
+                                    <tr>
+                                        <td>{{aux.idPedido}}</td>
+                                        <td>{{aux.detalle!.fecha}}</td>
+                                        <td>{{aux.detalle!.nombreProducto}}</td>
+                                        <td>{{getEstado(aux.detalle!.estado==null?0:aux.detalle!.estado)}}</td>
+                                       <td><button (click)="actualizaEstado(aux.detalle!)" type="button" style="width: 90px" class="btn btn-primary btn-sm" >Atender</button></td>
+                                      
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
+                        <div class="table-responsive" >
+                            <h4>Mis compras</h4>
+                            <br>
+                            <table class="table table-bordered"   *ngFor="let compra of  listaComprasporUsuario" >
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th style="width: 10%">Productos</th>
+                                        <th style="width: 10%">Fecha</th>
+                                        <th style="width: 10%">Precio</th>
+                                        <th style="width: 10%">Estado</th>
+                                        <th style="width: 10%">Factura</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-middle">
+                                    <tr>
+                                        <td>{{compra.nombreProducto}}</td>
+                                        <td>{{compra.fecha}}</td>
+                                        <td>{{compra.monto}}</td>
+                                        <td>{{getEstado(compra.estado==null?0:compra.estado)}}</td>
+                                        <td><button routerLink="/addFactura/{{compra.idCompras}}" type="button" style="width: 90px" class="btn btn-primary btn-sm" >Ver factura</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                           
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="address-nav">
+                        <h4>Direcciones de Envio</h4>
+                        <br>
+                        <div class="table-responsive" >
+                            <table class="table table-bordered"  *ngFor="let aux of listaPedidoporUsuario" >
+                                
+                               
+                                <thead class="thead-dark"  >
+                                    <tr>
+                                        <th style="width: 10%">Codigo de Pedido</th>
+                                        <th style="width: 20%">Nombre de Cliente</th>
+                                        <th style="width: 20%">Contacto</th>
+                                        <th style="width: 15%">Direccion de Entrega</th>
+                                        <th style="width: 10%">Provincia</th>
+                                        <th style="width: 7%">Distrito</th>
+                                        <th style="width: 7%">Pais</th>
+                                       
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody class="align-middle" >
+                                    <tr>
+                                        <td>{{aux.idPedido}}</td>
+                                        <td>{{aux.detalle!.usuario!.nombre}} {{aux.detalle!.usuario!.paterno}} {{aux.detalle!.usuario!.materno}}</td>
+                                        <td>{{aux.detalle!.usuario!.email}} <br>
+                                            {{aux.detalle!.usuario!.celular}}
+                                        </td>
+                                        <td>{{aux.detalle!.direccion}}</td>
+                                        <td>{{aux.detalle!.provincia}}</td>
+                                        <td>{{aux.detalle!.distrito}}</td>
+                                        <td>{{aux.detalle!.pais}}</td>
+                                    </tr>
+                                </tbody>
+                         
+                            </table>
+                            
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                        <h4>Actualiza tus Datos</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" placeholder="Nombres">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" placeholder="Apellido paterno">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" placeholder="Apellido Materno">
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" placeholder="Dni">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" placeholder="Direccion">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" placeholder="Celular">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Usuario">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" placeholder="Contraseña">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" placeholder="Email">
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn">Actualizar Cuenta</button>
+                                <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
 </div>
-
 <div class="modal fade"  id="idModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
     <div class="modal-dialog" style="max-width: 70%;">
@@ -132,7 +269,5 @@
 
         </div>
     </div>
-</div>
-<!-- Cart End -->
-   
-
+</div> -->
+<!-- My Account End -->

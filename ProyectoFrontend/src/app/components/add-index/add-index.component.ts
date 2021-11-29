@@ -26,16 +26,15 @@ export class AddIndexComponent implements OnInit {
 
     this.ProductoService.lista().subscribe(
       reponse => {
-        console.log("ListoGeneral");
         this.listaGeneral = reponse;
+        console.log(this.listaGeneral);
       },
       error =>{
         console.log(error);
       },  
     )  
   }
-   
- 
+  
 
   ngOnInit() {
     this.listarProductosGeneral();

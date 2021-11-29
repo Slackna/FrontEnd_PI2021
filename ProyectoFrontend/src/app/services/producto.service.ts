@@ -14,17 +14,26 @@ export class ProductoService {
 
    UsuarioId="http://localhost:8095/rest/";
   
-  
 
   constructor(private http: HttpClient) { }
-  registraProducto(data:FormData):Observable<any>{
-    const req=new HttpRequest('POST', baseUrl  + 'registraProducto' ,data);
-  // return this.http.post(baseUrl  + 'registraProducto' ,data );
-//, {headers: {'Content-Type': 'undefined'}}
-    return this.http.request(req);
+  registraProducto(data:Producto):Observable<any>{
+    // const req=new HttpRequest('POST', baseUrl  + 'registraProducto' ,data);
+  return this.http.post(baseUrl  + 'registraProducto' ,data );
+    // return this.http.request(req);
     
   }
   
+  registraImagenes(data:FormData):Observable<any>{
+    // const req=new HttpRequest('POST', baseUrl  + 'registraImagenes' ,data);
+  return this.http.post(baseUrl  + 'registraImagenes' ,data );
+    // return this.http.request(req);
+    
+  }
+
+  // obtenerImg(urlimg:String):Observable<any>{
+  //   return this.http.get(baseUrl + '', )
+  // }
+
   listarProductoCategorias(data:number):Observable<any>{
     return this.http.get<Producto[]>(baseUrl + 'listaProductoByCat',{
     params: new HttpParams().set('idCategoria', data)

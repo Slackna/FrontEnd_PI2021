@@ -22,7 +22,6 @@ import { ListaCategoriaHerramientasComponent } from './components/lista-categori
 import { ListaCategoriaBebesComponent } from './components/lista-categoria-bebes/lista-categoria-bebes.component';
 import { ListaCategoriJuguetesComponent } from './components/lista-categori-juguetes/lista-categori-juguetes.component';
 import { AddDetallCompraComponent } from './components/add-detall-compra/add-detall-compra.component';
-import { AddPerfilUsuarioComponent } from './components/add-perfil-usuario/add-perfil-usuario.component';
 import { AddCompraComponent } from './components/add-compra/add-compra.component';
 import { FilterPipe } from './filter.pipe';
 import { Filter2Pipe } from './filter2.pipe';
@@ -57,7 +56,6 @@ import { EstadisticasComponent } from './components/estadisticas/estadisticas.co
     ListaCategoriaBebesComponent,
     ListaCategoriJuguetesComponent,
     AddDetallCompraComponent,
-    AddPerfilUsuarioComponent,
     AddCompraComponent,
     FilterPipe,
     Filter2Pipe,
