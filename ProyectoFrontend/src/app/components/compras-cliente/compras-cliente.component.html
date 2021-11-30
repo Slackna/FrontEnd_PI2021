@@ -45,9 +45,8 @@
                                     <th style="width: 10%">Productos</th>
                                     <th style="width: 10%">Fecha</th>
                                     <th style="width: 10%">Precio</th>
-                                    <th style="width: 10%">Estado</th>
                                     <th style="width: 10%">Factura</th>
-                                    <th style="width: 10%">Factura</th>
+                                    <th style="width: 10%">Ver</th>
                                 </tr>
                             </thead>
                             <tbody class="align-middle">
@@ -60,9 +59,8 @@
                                     </td>
                                     <td>{{compra.fecha}}</td>
                                     <td>{{compra.monto}}</td>
-                                    <td>{{getEstado(compra.estado==null?0:compra.estado)}}</td>
                                     <td><button routerLink="/addFactura/{{compra.idCompras}}" type="button" style="width: 90px" class="btn btn-primary btn-sm" >Ver factura</button></td>
-                                    <td><button  type="button" style="width: 190px" class="btn btn-primary btn-sm" >Ver Seguimiento</button></td>
+                                    <td><button  type="button" style="width: 190px" class="btn btn-primary btn-sm" data-toggle="modal" attr.data-target="#mostrarmodal{{compra.estado}}">Ver Seguimiento</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -77,4 +75,42 @@
     </div>
 </div>
 <!-- Cart End -->
-   
+   <!-- -->
+<div class="modal fade" id="mostrarmodal0" role="dialog">
+    <div class="modal-dialog modal-dialog-centered mt-2">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h4 class="modal-title">¡Aviso!</h4>
+            </div>
+
+            <div class="modal-body d-flex justify-content-center" >
+                <h5 class="text-center">Su pedido esta siendo procesado<br>Estado: Enviado</h5>
+            </div>
+
+            <div class="modal-footer">
+                <a href="" data-dismiss="modal" class="btn btn-danger d-block mx-auto" id="btnCerrar">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------->
+
+<!-- -->
+<div class="modal fade" id="mostrarmodal1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered mt-2">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center">
+                <h4 class="modal-title">¡Aviso!</h4>
+            </div>
+
+            <div class="modal-body d-flex justify-content-center"  >
+                <h5 class="text-center">Su pedido esta siendo procesado<br>Estado: Pagado</h5>
+            </div>
+
+            <div class="modal-footer">
+                <a href="" data-dismiss="modal" class="btn btn-danger d-block mx-auto" id="btnCerrar">Cerrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+

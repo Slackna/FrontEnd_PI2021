@@ -15,11 +15,11 @@ export class ComprasClienteComponent implements OnInit {
 
 
   getEstado(aux:number):string{
-    return aux ==1 ? "Pagado" : "Entregado";
+    return aux ==1 ? "Pagado" : "Enviado";
   }
 
   getTextoBotonEstado(aux:number):string{
-    return aux ==1 ? "Entregado" : "Pagado";
+    return aux ==1 ? "Enviado" : "Pagado";
   }
   listarComprasxUsuario(){
     this.idUsuario=parseInt(this.tokenService.getUserID())
