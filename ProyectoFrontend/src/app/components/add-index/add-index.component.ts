@@ -6,12 +6,15 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { TokenService } from 'src/app/services/token.service';
 
+const imageURl = "file:///C:/Users/Home/git/Backend_PI2021/ProyectoBackend/bin/img/";
 @Component({
   selector: 'app-add-index',
   templateUrl: './add-index.component.html',
   styleUrls: ['./add-index.component.css']
 })
 export class AddIndexComponent implements OnInit {
+ 
+
  
 
   listaGeneral:Producto[] =[]

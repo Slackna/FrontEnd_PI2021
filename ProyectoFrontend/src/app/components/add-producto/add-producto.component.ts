@@ -105,10 +105,10 @@ submitted = false;
    
    for (let i = 0; i < event.target.files.length; i++){
 
-      nombresarchivos =nombresarchivos+ event.target.files[i].name +"," 
+      nombresarchivos =nombresarchivos+ event.target.files[i].name 
       
       this.data.append("files", event.target.files[i])
-
+      this.producto.img1=nombresarchivos
       this.ProductoService.registraImagenes(this.data).subscribe(
         error=>{
           event.preventDefault()
