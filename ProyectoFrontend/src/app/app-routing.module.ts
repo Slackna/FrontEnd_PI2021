@@ -23,6 +23,8 @@ import { ComprasClienteComponent } from './components/compras-cliente/compras-cl
 import { AddVentasComponent } from './components/add-ventas/add-ventas.component';
 import { AddFacturaComponent } from './components/add-factura/add-factura.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
+import { VentGuardServiceService as guard } from './services/vent-guard-service.service';
+import { AddContactoComponent } from './components/add-contacto/add-contacto.component';
 
 
 
@@ -47,10 +49,11 @@ const routes: Routes = [
   {path:"addComprar/:id", component:AddDetallCompraComponent},
   {path:"addPublicaciones", component:AddPublicacionesUsuarioComponent},
   {path:"addCompra/:id", component:AddCompraComponent},
-  {path:"addVentas", component:AddVentasComponent},
+  {path:"addVentas", component:AddVentasComponent , canActivate: [guard], data: { expectedRol: ['admin', 'user'] }},
   {path:"addComprasCliente", component:ComprasClienteComponent},
   {path:"addFactura/:id", component:AddFacturaComponent},
   {path:"addEstadisticas", component:EstadisticasComponent},
+  {path:"addContacto", component:AddContactoComponent},
   {path: '**', redirectTo: '/addIndex'},
  
 ];

@@ -11,6 +11,7 @@ export class Usuario {
 	nombreUsuario?: string;
 	password?: string;
 	ruc?: string;
+	Fecha_registro?: string;
 	razonSocial?: string;
 	authorities?: string[];
 }

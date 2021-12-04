@@ -48,6 +48,7 @@
                                     <th>Descripcion</th>
                                     <th>Direccion</th>
                                     <th>Fecha</th>
+                                    <th>Edita</th>
                                     <th>Eliminar</th>
                                 </tr>
                             </thead>
@@ -55,7 +56,7 @@
                                 <tr>
                                     <td>
                                         <div class="img">
-                                            <a href="#"><img src="assets/img/product-5.jpg" alt="Image"></a>
+                                            <a href="#"><img src="http://localhost:4200/assets/img/{{producto.img1}}" alt="Image"></a>
                                             <p>{{producto.nombre}}</p>
                                         </div>
                                     </td>
@@ -63,7 +64,8 @@
                                     <td> {{producto.descripcion}}</td>
                                     <td>{{producto.direccion}}</td>
                                     <td>{{producto.fecha}}</td>
-                                    <td><button><i class="fa fa-trash"></i></button></td>
+                                    <td><button (click)="busca(producto)" type="button" style="width: 90px" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#idModalActualizar">Editar</button></td>
+                                    <td><button (click)="borrar(producto.idProducto!)"type="button" style="width: 90px" class="btn btn-primary btn-sm" >Eliminar</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -74,5 +76,96 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="idModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Actualización de Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+            </div>
+            <div class="modal-body">
+
+                <form class="content" >
+                    <div class="submit-form">
+
+                        <div  class="row">
+                            <div class="col-lg-8">
+                                <label for="id_act_nombre">Nombre</label>
+                                <input [(ngModel)]="producto.nombre" type="text" placeholder="Ingrese el nombre" class="form-control" name="nombre" id="id_act_nombre" />
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="id_act_marca">Marca</label>
+                                <input [(ngModel)]="producto.marca"  type="text" placeholder="Ingrese Precio" class="form-control" name="marca" id="id_act_precio"  maxlength="8"/>
+                            </div>
+                           
+
+                            <div class="col-lg-2">
+                                <label for="id_act_precio">Precio</label>
+                                <input [(ngModel)]="producto.precio"  type="text" placeholder="Ingrese Precio" class="form-control" name="precio" id="id_act_precio"  maxlength="8"/>
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="id_act_stock">Direccion</label>
+                                <input [(ngModel)]="producto.direccion"  type="text" placeholder="Ingrese Stock" class="form-control" name="stock" id="id_act_stock"  maxlength="8"/>
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="id_act_serie">Condición</label>
+                                <input [(ngModel)]="producto.condicion"  type="text" placeholder="Ingrese Serie" class="form-control" name="serie" id="id_act_serie"  maxlength="8"/>
+                            </div>
+                            <div class="col-lg-2">
+                                <label for="id_act_serie">Descripcion</label>
+                                <input [(ngModel)]="producto.descripcion"  type="text" placeholder="Ingrese Serie" class="form-control" name="serie" id="id_act_serie"  maxlength="100"/>
+                            </div>
+                            
+                                <div class="col-lg-4">
+                                    <label for="id_act_departamento">Categoria</label>
+                                    <select [(ngModel)] = "producto.categoria!.id_categoria"   id="id_act_departamento" name="departamento" class="form-control">
+                                        <option value="-1"> [Seleccione] </option>
+                                        <option *ngFor="let aux of lstCategoria" value="{{ aux.id_categoria }}">
+                                            {{ aux.nombre }}
+                                        </option> 
+                                    </select>
+                            </div>
+                           
+                           
+                        </div>
+                        <div class="col-lg-2">
+                            <label for="id_act_serie">Imagenes</label>
+                            <input type="file" formControlName="file" name="files" multiple id="img1" accept=".jpg,.png,.jpeg" required="file"  [(ngModel)]="producto.img1" (change)="prueba($event)"  />
+                        </div>
+                        
+
+
+                       
+
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        
+                        
+                        <div class="form-group text-center">
+                            <div class="col-lg-12">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_act_cerrar">Close</button>
+                                <br>
+                                <br>
+                                <button (click)="actualiza()"  id="id_act_actualiza" class="btn btn-success form-control">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </form>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
 <!-- Cart End -->
    

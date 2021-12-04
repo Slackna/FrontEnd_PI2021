@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
+import { Categoria } from '../models/categoria.model';
+import { CategoriaService } from '../services/categoria.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,8 +12,17 @@ export class MenuComponent implements OnInit {
 
   isLogged = false;
   nombreUsuario = '';
+  
+  lstCategoria: Categoria[] =[];
 
-  constructor(private tokenService: TokenService) { }
+  constructor(private tokenService: TokenService,private categoriaService: CategoriaService) { 
+
+    this.categoriaService.listaCategoria().subscribe(
+      categoria =>this.lstCategoria=categoria);
+  }
+
+  
+  
 
   ngOnInit() {
     if (this.tokenService.getToken()!="{}") {

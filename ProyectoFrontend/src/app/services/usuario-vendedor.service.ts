@@ -7,7 +7,7 @@ import { Usuario } from '../models/usuario.model';
 
 
 
-const baseUrl = 'http://localhost:8095/rest/registraUsuario';
+const baseUrl = 'http://localhost:8095/rest/';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +15,7 @@ export class UsuarioVendedorService {
 
   constructor(private http: HttpClient) { }
   create(data:Usuario):Observable <any>{
-          return this.http.post(baseUrl, data);
+          return this.http.post(baseUrl +"registraUsuario", data);
 
   }
 }

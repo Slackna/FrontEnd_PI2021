@@ -34,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddVentasComponent } from './components/add-ventas/add-ventas.component';
 import { AddFacturaComponent } from './components/add-factura/add-factura.component';
 import { EstadisticasComponent } from './components/estadisticas/estadisticas.component';
+import { AddContactoComponent } from './components/add-contacto/add-contacto.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { EstadisticasComponent } from './components/estadisticas/estadisticas.co
     AddVentasComponent,
     AddFacturaComponent,
     EstadisticasComponent,
+    AddContactoComponent,
     
   ],
   imports: [

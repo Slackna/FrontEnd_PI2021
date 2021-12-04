@@ -41,8 +41,10 @@
                     <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-credit-card"></i>Mis Compras</a>
                     <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-map-marker-alt"></i>Envios</a>
                     <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-user"></i>Detalles de cuenta</a>
+                    <a  *ngIf="isAdmin" class="nav-link" id="usuario-nav" data-toggle="pill" href="#usuario-tab" role="tab"><i class="fas fa-user"></i>Usuarios</a>
+                    <a  *ngIf="isAdmin" class="nav-link" id="mantenimiento-nav" data-toggle="pill" href="#mantenimiento-tab" role="tab"><i class="fa fa-shopping-bag"></i>Mantenimiento E-Store</a>
+                    <a   class="nav-link" id="reclamos-nav" data-toggle="pill" href="#reclamos-tab" role="tab"><i class="fa fa-shopping-bag"></i>Mis reclamos</a>
                     <a class="nav-link" routerLink="/addIndex"  *ngIf="isLogged" (click)="onLogOut()"><i class="fa fa-sign-out-alt"></i>Cerrar Sesión</a>
-                    
                 </div>
             </div>
             <div class="col-md-9">
@@ -60,8 +62,8 @@
                             <h4>2.  Escoge que deseas publicar</h4>    
                                 <p>
                 
-                Escribe un título para tu publicación. Cuanto más preciso sea el título más fácil será para tus compradores saber que ofreces lo que están buscando. Conoce cómo titular correctamente.
-                Selecciona la categoría de tu producto. Tomando el título de la publicación, te sugerimos una categoría para el producto que deseas vender. Verifica que se adapte a lo que estás ofreciendo o escoge otras. Puedes buscar en qué categoría publica tu competencia para asegurarte de estar publicando de forma correcta.</p>
+                   Escribe un título para tu publicación. Cuanto más preciso sea el título más fácil será para tus compradores saber que ofreces lo que están buscando. Conoce cómo titular correctamente.
+                   Selecciona la categoría de tu producto. Tomando el título de la publicación, te sugerimos una categoría para el producto que deseas vender. Verifica que se adapte a lo que estás ofreciendo o escoge otras. Puedes buscar en qué categoría publica tu competencia para asegurarte de estar publicando de forma correcta.</p>
                 
                             <h4>
                                 3.  Completa la informacion de tu producto  
@@ -79,6 +81,7 @@
                           
                         </div>
                     </div>
+                    
                     <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
                         <button   class="btn btn-primary btn-"type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-success' style="width: 180px">Detalles de Entrega</button>
                         <br>
@@ -109,6 +112,9 @@
                             </table>
                         </div>
                     </div>
+
+                   
+
                     <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
                         <div class="table-responsive" >
                             <h4>Mis compras</h4>
@@ -178,43 +184,318 @@
                         <h4>Actualiza tus Datos</h4>
                         <div class="row">
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Nombres">
+                                <input [(ngModel)]="usuario.nombre" class="form-control" type="text" placeholder="Nombres">
                             </div>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Apellido paterno">
+                                <input  [(ngModel)]="usuario.paterno" class="form-control" type="text" placeholder="Apellido paterno">
                             </div>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Apellido Materno">
+                                <input  [(ngModel)]="usuario.materno" class="form-control" type="text" placeholder="Apellido Materno">
                             </div>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" placeholder="Dni">
+                                <input  [(ngModel)]="usuario.dni"class="form-control" type="text" placeholder="Dni">
                             </div>
                             <div class="col-md-12">
-                                <input class="form-control" type="text" placeholder="Direccion">
+                                <input [(ngModel)]="usuario.direccion" class="form-control" type="text" placeholder="Direccion">
                             </div>
                             <div class="col-md-12">
-                                <input class="form-control" type="text" placeholder="Celular">
+                                <input [(ngModel)]="usuario.celular" class="form-control" type="text" placeholder="Celular">
                             </div>
                             <div class="col-md-12">
-                                <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Usuario">
+                                <input [(ngModel)]="usuario.nombreUsuario" class="form-control" id="nombreUsuario" name="nombreUsuario" type="text" placeholder="Usuario">
                             </div>
                             <div class="col-md-12">
-                                <input class="form-control" type="text" placeholder="Contraseña">
+                                <input  [(ngModel)]="usuario.password" class="form-control" type="password" placeholder="Contraseña">
                             </div>
                             <div class="col-md-12">
-                                <input class="form-control" type="text" placeholder="Email">
+                                <input [(ngModel)]="usuario.email" class="form-control" type="email" placeholder="Email">
                             </div>
                             <div class="col-md-12">
-                                <button class="btn">Actualizar Cuenta</button>
+                                <button (click)="actualiza()"  id="id_act_actualiza" class="btn btn-success form-control">Actualizar Cuenta</button>
                                 <br><br>
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="usuario-tab" role="tabpanel" aria-labelledby="usuario-nav">
+                        <div>
+
+                            <form class="content"  (submit) = "consultaCliente()">
+                        
+                        
+                            <div class="submit-form" >
+                          
+                                 <div class="row">
+                                    <div class="col-lg-12">
+                                        <h6>Consulta de Usuario</h6>
+                                    </div>
+                                </div>
+                          
+                                <div class="row" style="margin-top: 2%">
+                                        <label for="nombres" class="col-lg-1">Nombres</label>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="nombres" id="nombres"  [(ngModel)]= "nombre2" />
+                                        </div>
+                                        <label for="apellidos" class="col-lg-1">Usuario</label>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="nombreUsuario1" id="nombreUsuario1"  [(ngModel)]= "nombreUsuario1" />
+                                        </div>
+                                        <label for="apellidos" class="col-lg-1">Email</label>
+                                        <div class="col-lg-2">
+                                            <input type="text" class="form-control" name="email" id="email"  [(ngModel)]= "email1" />
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <button class="btn btn-success"  >Filtrar</button>
+                                        </div>
+                                 </div>
+                        
+                        
+                                 <div class="row" style="margin-top: 3%">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombres</th>
+                                                    <th>Usuario</th>
+                                                    <th>Email</th>
+                                                    <th>Telefono</th>
+                                                    <th>DNI</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr *ngFor = "let aux of usuario2" >
+                                                         <td>{{ aux.idUsuario }}</td>   
+                                                         <td>{{ aux.nombre }} {{ aux.paterno }} {{ aux.materno }}</td> 
+                                                         <td>{{ aux.nombreUsuario}}</td>     
+                                                         <td>{{ aux.email }}</td>   
+                                                         <td>{{ aux.celular }}</td>   
+                                                         <td>{{ aux.dni}}</td> 
+                                                    </tr>
+                        
+                                            </tbody>
+                                               
+                        
+                                        </table>
+                        
+                        
+                                 </div>
+                                
+                        
+                                </div>
+                        
+                          
+                             </form>
+                          
+                          
+                            </div>
+                        
+                    </div>
+                    <div class="tab-pane fade" id="mantenimiento-tab" role="tabpanel" aria-labelledby="mantenimiento-nav">
+                        
+                        <div class="container" >
+
+                            <h5>Mantenimiento de Categorias</h5>
+                        
+                            <div class="col-md-23" style="margin-top: 3%">
+                        
+                        
+                                <div class="row" style="height: 80px">
+                                    <div class="col-md-4">
+                                        <input [(ngModel)] = "filtro"  class="form-control"  id="id_txt_filtro" name="filtro" placeholder="Ingrese el nombre" type="text" maxlength="30" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button (click)="consulta()"  type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">Filtrar</button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-success' style="width: 150px">Registrar</button>
+                                    </div>
+                                </div>
+                        
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="content">
+                        
+                                            <table id="id_table" class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 5%">#</th>
+                                                        <th style="width: 30%">Nombre</th>
+                                
+                                                        <th style="width: 7%"></th>
+                                                        <th style="width: 7%"></th>
+                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let aux of categorias">
+                                                        <td>{{aux.id_categoria}}</td>
+                                                        <td>{{aux.nombre}}</td>
+                                                        
+                                                        <td><button (click)="busca(aux)" type="button" style="width: 90px" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#idModalActualizar">Editar</button></td>
+                                                        <td><button (click)="borrar(aux.id_categoria!)"type="button" style="width: 90px" class="btn btn-primary btn-sm" >Eliminar</button></td>
+                                                    
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        
+                            <div class="modal fade"  id="idModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        
+                                <div class="modal-dialog" style="max-width: 70%;">
+                                    <div class="modal-content" >
+                        
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Registro de una Categoria</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="modal-body">
+                                            <form class="content" >
+                                                <div class="submit-form">
+                                                    
+                                                        <div  class="row">
+                                                            <div class="col-lg-10">
+                                                                <label for="id_reg_nombre">Nombre</label>
+                                                                <input [(ngModel)]="categoria.nombre" type="text" placeholder="Ingrese el nombre" class="form-control" name="nombre" id="id_reg_nombre" />
+                                                            </div>
+                                                            
+                                                           
+                                                        </div>
+       
+                        
+                                                </div> 
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_reg_cerrar" style="width: 100px;">Close</button>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-lg-12">
+                                                            <button (click)="registra()" id="id_reg_registra"  class="btn btn-success form-control"style="width: 100px;">Registrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                        
+                                       
+                                            </form>
+                                        </div>
+                        
+                        
+                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="modal fade" id="idModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="max-width: 80%;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Actualización de una Categoria</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                 <span aria-hidden="true">&times;</span>
+                                             </button>
+                                        </div>
+                                        <div class="modal-body">
+                        
+                                            <form class="content" >
+                                                <div class="submit-form">
+                        
+                                                    <div  class="row">
+                                                        <div class="col-lg-8">
+                                                            <label for="id_act_nombre">Nombre</label>
+                                                            <input [(ngModel)]="categoria.nombre" type="text" placeholder="Ingrese el nombre" class="form-control" name="nombre" id="id_act_nombre" />
+                                                        </div>                      
+                                                    </div>
+                            
+                            
+                        
+                                                </div>
+                        
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_act_cerrar">Close</button>
+                                                    <div class="form-group text-center">
+                                                        <div class="col-lg-12">
+                                                            <button (click)="actualizaCate()"  id="id_act_actualiza" class="btn btn-success form-control">Actualizar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                        
+                        
+                        
+                        
+                        
+                                        </div>
+                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                          
+                            
+                        
+                    </div>
+
+
                 </div>
-            </div>
+                <div class="tab-pane fade" id="reclamos-tab" role="tabpanel" aria-labelledby="reclammos-nav">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="content">
+            
+                                <table id="id_table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 5%">Codigo</th>
+                                            <th style="width: 30%">Descripcion</th>
+                                            <th style="width: 20%">fechaRegistro</th>
+                                            <th style="width: 10%">Cliente</th>
+                                            <th style="width: 7%"></th>
+                                    
+            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let aux of reclamoss">
+                                            <td>{{aux.idReclamo}}</td>
+                                            <td>{{aux.descripcion}}</td>
+                                            <td>{{aux.fechaRegistro}}</td>
+                                            <td>{{aux.usuario!.nombre}} {{aux.usuario!.paterno}} {{aux.usuario!.materno}}</td>
+                                            <td><button (click)="borrarReclamo(aux.idReclamo!)"type="button" style="width: 90px" class="btn btn-primary btn-sm" >Eliminar</button></td>
+                                        
+                                        </tr>
+                                    </tbody>
+                                </table>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="modal fade"  id="idModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
     <div class="modal-dialog" style="max-width: 70%;">
@@ -269,5 +550,5 @@
 
         </div>
     </div>
-</div> -->
+</div>
 <!-- My Account End -->
